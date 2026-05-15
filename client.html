@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client History - Wenpy.Id</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+        .table-header {
+            background: linear-gradient(135deg, #6ee7b7 0%, #34d399 50%, #065f46 100%);
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            padding: 0.5rem 0.85rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .badge-sangat { background: #16a34a; }
+        .badge-puas { background: #22c55e; }
+        .badge-cukup { background: #f59e0b; }
+        .badge-kurang { background: #ef4444; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-100">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        <a href="index.html" class="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 font-medium mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            Kembali ke Beranda
+        </a>
+
+        <header class="mb-10 text-center">
+            <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Client Page</p>
+            <h1 class="text-4xl md:text-5xl font-bold mt-4">Riwayat Project Klien</h1>
+            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Lihat daftar klien, tujuan web yang dibuat, dan tingkat kepuasan mereka sebagai referensi project Wenpy.Id.</p>
+        </header>
+
+        <div class="overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-lg">
+            <table class="min-w-full text-sm text-left">
+                <thead class="table-header text-white">
+                    <tr>
+                        <th class="px-6 py-4">Nama User</th>
+                        <th class="px-6 py-4">Tujuan Web</th>
+                        <th class="px-6 py-4">Kepuasan</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200">
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4">Andi Pratama</td>
+                        <td class="px-6 py-4">Website profil usaha kuliner modern</td>
+                        <td class="px-6 py-4"><span class="badge badge-sangat">Sangat Puas</span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4">Siti Rahma</td>
+                        <td class="px-6 py-4">Toko online fashion lokal</td>
+                        <td class="px-6 py-4"><span class="badge badge-puas">Puas</span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4">Bayu Santoso</td>
+                        <td class="px-6 py-4">Landing page brand teknologi</td>
+                        <td class="px-6 py-4"><span class="badge badge-puas">Puas</span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4">Mira Ayu</td>
+                        <td class="px-6 py-4">Portofolio pribadi designer</td>
+                        <td class="px-6 py-4"><span class="badge badge-sangat">Sangat Puas</span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4">Rifki Akbar</td>
+                        <td class="px-6 py-4">Sistem pemesanan jasa online</td>
+                        <td class="px-6 py-4"><span class="badge badge-cukup">Cukup</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+            <div class="rounded-3xl bg-white p-6 shadow-lg border border-slate-200">
+                <h2 class="text-lg font-semibold mb-3">Statistik Kepuasan</h2>
+                <p class="text-slate-600">Mayoritas klien merasa puas dengan hasil akhir dan dukungan tim Wenpy.Id.</p>
+            </div>
+            <div class="rounded-3xl bg-white p-6 shadow-lg border border-slate-200">
+                <h2 class="text-lg font-semibold mb-3">Tujuan Web</h2>
+                <p class="text-slate-600">Mulai dari toko online, profil bisnis, hingga landing page brand, semua dibuat sesuai target klien.</p>
+            </div>
+            <div class="rounded-3xl bg-white p-6 shadow-lg border border-slate-200">
+                <h2 class="text-lg font-semibold mb-3">User Favorit</h2>
+                <p class="text-slate-600">Klien yang puas jadi bukti kualitas dan komunikasi tim dalam membangun website.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
