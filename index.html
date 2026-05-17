@@ -1,1259 +1,1746 @@
 ﻿<!DOCTYPE html>
-<html lang="id" class="dark">
-<link rel="icon" type="image/png" href="ppbg.png">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wenpy.Id  |  Jasa Website Indonesia & Web Developer Profesional - UI/UX Design Modern</title>
-    
-    <!-- Meta Tags SEO -->
-    <meta name="title" content="Wenpyid | Jasa Website Indonesia & Web Developer Profesional - UI/UX Design Modern">
-    <meta name="description" content="Wenpyid: Jasa pembuatan website profesional Indonesia. Tim web developer spesialis UI/UX design modern, cepat & siap produksi. Konsultasi gratis untuk bisnis Anda.">
-    <meta name="keywords" content="Jasa Website Indonesia, Web Developer Profesional, UI/UX Design, Pembuatan Website, Web Design Modern, React Developer Indonesia, Tim Developer Indonesia">
-    <meta name="author" content="Wenpyid Team">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Indonesian">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wenpyid.com/">
-    <meta property="og:title" content="Wenpyid | Tim Web Developer Profesional Indonesia">
-    <meta property="og:description" content="Tim developer profesional siap mewujudkan website modern dan berperforma tinggi untuk bisnis Anda.">
-    <meta property="og:image" content="https://wenpyid.com/logo-og.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wenpy.Id | Tim Web Developer Profesional Indonesia</title>
+<meta name="description" content="Wenpyid: Jasa pembuatan website profesional Indonesia. Tim web developer spesialis UI/UX design modern, cepat & siap produksi.">
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+/* ── TOKENS ── */
+:root {
+  --mint: #6ee7b7;
+  --mint-bright: #a7f3d0;
+  --mint-deep: #34d399;
+  --emerald: #059669;
+  --bg: #050c0a;
+  --bg2: #070f0b;
+  --surface: rgba(16,28,22,0.85);
+  --border: rgba(110,231,183,0.12);
+  --border-hover: rgba(110,231,183,0.35);
+  --text: #f0fdf6;
+  --text-dim: #94a89e;
+  --text-muted: #2d4437;
+  --glow: rgba(110,231,183,0.4);
+  --glow-sm: rgba(110,231,183,0.2);
+}
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Wenpyid | Tim Web Developer Profesional Indonesia">
-    <meta property="twitter:description" content="Tim developer profesional siap mewujudkan website modern dan berperforma tinggi untuk bisnis Anda.">
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#0a0a0a',
-                        wenpyid: {
-                            light: '#a7f3d0', // Mint green light
-                            DEFAULT: '#6ee7b7', // Mint green
-                            dark: '#34d399', // Emerald
-                            deep: '#065f46', // Dark emerald
-                        }
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        glowPulse: {
-                            '0%, 100%': { opacity: '0.5' },
-                            '50%': { opacity: '1' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
-        }
-        
-        :root {
-            --accent: #6ee7b7;
-            --accent-dark: #34d399;
-            --accent-deep: #065f46;
-        }
+body{
+  font-family:'Satoshi',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  cursor:none;
+}
 
-        .wenpyid-gradient {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 50%, var(--accent-deep) 100%);
-        }
-        
-        .wenpyid-text {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .glow-border {
-            position: relative;
-            background: #0a0a0a;
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        
-        .glow-border::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(110, 231, 183, 0.5), rgba(52, 211, 153, 0.1), rgba(110, 231, 183, 0.5));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-        }
-        
-        .glow-border:hover::before {
-            opacity: 1;
-            background: linear-gradient(135deg, rgba(110, 231, 183, 0.8), rgba(52, 211, 153, 0.3), rgba(110, 231, 183, 0.8));
-        }
-        
-        .card-hover {
-            transition: transform 0.4s cubic-bezier(0.10, 0, 0.2, 1), box-shadow 0.4s ease;
-        }
-        
-        .card-hover:hover {
-            transform: scale(1.02) translateY(-8px);
-            box-shadow: 0 20px 40px rgba(110, 231, 183, 0.15), 0 0 60px rgba(110, 231, 183, 0.1);
-        }
-        
-        .tech-pill {
-            background: rgba(110, 231, 183, 0.1);
-            border: 1px solid rgba(110, 231, 183, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .tech-pill:hover {
-            background: rgba(110, 231, 183, 0.2);
-            border-color: rgba(110, 231, 183, 0.6);
-            transform: translateY(-2px);
-        }
-        
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .scroll-reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #34d399;
-            border-radius: 4px;
-        }
+/* ── CUSTOM CURSOR ── */
+#cur,#cur-ring{
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+}
+#cur{width:8px;height:8px;background:var(--mint);}
+#cur-ring{
+  width:32px;height:32px;
+  border:1.5px solid rgba(110,231,183,0.5);
+  transition:width .2s,height .2s,border-color .2s;
+}
+body.hovering #cur-ring{width:48px;height:48px;border-color:var(--mint);}
 
-        body.light-theme {
-            background-color: #f8fafc;
-            color: #0f172a;
-        }
+/* ── 3D CANVAS ── */
+#canvas3d{
+  position:fixed;inset:0;z-index:-1;
+  pointer-events:none;
+}
 
-        body.light-theme .bg-black\/80 {
-            background-color: rgba(255,255,255,0.88) !important;
-        }
+/* ── NOISE OVERLAY ── */
+.noise{
+  position:fixed;inset:0;z-index:9990;
+  pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:128px;
+  animation:noise-shift 8s steps(10) infinite;
+}
+@keyframes noise-shift{0%,100%{background-position:0 0}25%{background-position:20% 30%}50%{background-position:40% 10%}75%{background-position:60% 50%}}
 
-        body.light-theme .bg-black {
-            background-color: #ffffff !important;
-        }
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:20px 60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(5,12,10,0.8);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  transition:padding .4s ease;
+}
+nav.scrolled{padding:14px 60px;}
 
-        body.light-theme .bg-gray-900\/50,
-        body.light-theme .bg-gray-900 {
-            background-color: rgba(255,255,255,0.9) !important;
-        }
+.logo{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;
+}
+.logo-orb{
+  width:44px;height:44px;
+  border-radius:50%;
+  background:conic-gradient(from 0deg,var(--mint),var(--emerald),var(--mint));
+  padding:2px;
+  animation:orb-spin 8s linear infinite;
+}
+@keyframes orb-spin{to{transform:rotate(360deg);}}
+.logo-inner{
+  width:100%;height:100%;
+  border-radius:50%;
+  background:var(--bg);
+  display:grid;place-items:center;
+  overflow:hidden;
+}
+.logo-inner img{width:32px;height:32px;object-fit:contain;}
+.logo-name{
+  font-family:'Clash Display',sans-serif;
+  font-size:1.4rem;font-weight:700;
+  background:linear-gradient(135deg,var(--mint-bright),var(--mint-deep));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
 
-        body.light-theme .text-white {
-            color: #0f172a !important;
-        }
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-links a{
+  text-decoration:none;
+  color:var(--text-dim);
+  font-size:.875rem;font-weight:500;
+  letter-spacing:.02em;
+  transition:color .25s;
+  position:relative;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;bottom:-4px;left:0;right:0;
+  height:1px;background:var(--mint);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.nav-links a:hover{color:var(--mint);}
+.nav-links a:hover::after{transform:scaleX(1);}
 
-        body.light-theme .text-gray-400 {
-            color: #475569 !important;
-        }
+.nav-cta{
+  padding:10px 24px;
+  border:1px solid var(--border-hover);
+  border-radius:100px;
+  color:var(--mint);
+  font-size:.8rem;font-weight:600;letter-spacing:.05em;
+  text-decoration:none;
+  transition:all .3s;
+  background:rgba(110,231,183,0.05);
+}
+.nav-cta:hover{
+  background:var(--mint);color:#050c0a;
+  box-shadow:0 0 40px var(--glow);
+  transform:translateY(-1px);
+}
 
-        body.light-theme .text-gray-300 {
-            color: #334155 !important;
-        }
+/* ── HAMBURGER ── */
+.hamburger{
+  display:none;width:40px;height:40px;
+  border:1px solid var(--border);
+  background:transparent;color:var(--mint);
+  cursor:pointer;border-radius:8px;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;
+}
+.hamburger span{
+  display:block;width:20px;height:1.5px;
+  background:currentColor;transition:.3s;
+}
 
-        body.light-theme .text-gray-500 {
-            color: #64748b !important;
-        }
+/* Mobile nav */
+.mobile-nav{
+  display:none;
+  position:fixed;top:84px;left:0;right:0;z-index:999;
+  background:rgba(5,12,10,0.98);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  padding:20px 30px;
+  flex-direction:column;gap:20px;
+}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{color:var(--text-dim);text-decoration:none;font-size:1rem;padding:10px 0;border-bottom:1px solid var(--border);}
+.mobile-nav a:last-child{border:none;}
 
-        body.light-theme .border-white\/10 {
-            border-color: rgba(148,163,184,0.25) !important;
-        }
+/* ── SECTIONS ── */
+section{position:relative;padding:120px 60px;}
+.container{max-width:1200px;margin:0 auto;}
 
-        body.light-theme .border-white\/30 {
-            border-color: rgba(148,163,184,0.35) !important;
-        }
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:0 60px;
+  overflow:hidden;
+}
+.hero-inner{
+  max-width:1200px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
+}
 
-        body.light-theme .bg-wenpyid\/20 {
-            background-color: rgba(110,231,183,0.2) !important;
-        }
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;
+  border:1px solid var(--border-hover);
+  border-radius:100px;
+  font-size:.75rem;letter-spacing:.08em;
+  color:var(--text-dim);
+  background:rgba(110,231,183,0.05);
+  margin-bottom:28px;
+}
+.badge-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--mint);
+  animation:pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 var(--glow)}50%{box-shadow:0 0 0 6px transparent}}
 
-        body.light-theme .bg-slate-800\/70 {
-            background-color: rgba(241,245,249,0.7) !important;
-        }
+.hero-title{
+  font-family:'Clash Display',sans-serif;
+  font-size:clamp(3rem,5.5vw,5.5rem);
+  font-weight:700;line-height:1.0;
+  letter-spacing:-2px;
+  margin-bottom:24px;
+}
+.hero-title .line{
+  display:block;overflow:hidden;
+}
+.hero-title .line span{
+  display:block;
+  animation:line-reveal .9s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-title .line:nth-child(1) span{animation-delay:.1s;}
+.hero-title .line:nth-child(2) span{animation-delay:.22s;}
+.hero-title .line:nth-child(3) span{animation-delay:.34s;}
+@keyframes line-reveal{from{transform:translateY(110%);}to{transform:translateY(0);}}
 
-        body.light-theme .bg-gray-800\/50 {
-            background-color: rgba(241,245,249,0.5) !important;
-        }
+.mint-text{
+  background:linear-gradient(135deg,var(--mint-bright) 0%,var(--mint-deep) 60%,var(--emerald) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
 
-        .settings-button {
-            transition: transform 0.25s ease;
-        }
+.hero-desc{
+  font-size:1.1rem;line-height:1.85;
+  color:var(--text-dim);
+  max-width:480px;margin-bottom:40px;
+  animation:fade-up .9s ease .5s both;
+}
+@keyframes fade-up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-        .settings-button:hover {
-            transform: scale(1.06);
-        }
+.hero-btns{
+  display:flex;gap:16px;flex-wrap:wrap;
+  animation:fade-up .9s ease .6s both;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 32px;
+  background:linear-gradient(135deg,var(--mint),var(--emerald));
+  color:#050c0a;font-weight:700;font-size:.9rem;
+  border-radius:100px;text-decoration:none;
+  transition:all .35s cubic-bezier(.22,1,.36,1);
+  box-shadow:0 0 0 0 var(--glow);
+}
+.btn-primary:hover{
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:0 12px 50px var(--glow);
+}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:16px 32px;
+  border:1px solid var(--border-hover);
+  color:var(--mint);font-weight:500;font-size:.9rem;
+  border-radius:100px;text-decoration:none;
+  background:rgba(110,231,183,0.04);
+  transition:all .3s;
+}
+.btn-outline:hover{
+  background:rgba(110,231,183,0.1);
+  border-color:var(--mint);
+  transform:translateY(-2px);
+}
 
-        .settings-menu .color-btn {
-            border: 2px solid transparent;
-            transition: transform 0.25s ease, border-color 0.25s ease;
-        }
+.hero-stats{
+  display:flex;gap:40px;margin-top:50px;
+  animation:fade-up .9s ease .75s both;
+}
+.stat{border-left:2px solid var(--border-hover);padding-left:20px;}
+.stat-num{
+  font-family:'Clash Display',sans-serif;
+  font-size:2rem;font-weight:700;
+  background:linear-gradient(135deg,var(--mint-bright),var(--mint-deep));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.stat-label{font-size:.8rem;color:var(--text-dim);margin-top:4px;}
 
-        .settings-menu .color-btn:hover {
-            transform: scale(1.1);
-            border-color: rgba(255,255,255,0.9);
-        }
+/* Hero right — 3D sphere container */
+.hero-3d{
+  position:relative;
+  display:grid;place-items:center;
+  min-height:500px;
+}
+.hero-orb-wrap{
+  position:relative;
+  width:420px;height:420px;
+  animation:fade-up .9s ease .4s both;
+}
+#hero-canvas{
+  width:100%;height:100%;
+  border-radius:50%;
+}
+.orb-ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(110,231,183,0.15);
+}
+.orb-ring:nth-child(2){inset:-30px;animation:ring-spin 20s linear infinite;}
+.orb-ring:nth-child(3){inset:-60px;border-style:dashed;animation:ring-spin 28s linear infinite reverse;}
+.orb-ring:nth-child(4){inset:-90px;border-color:rgba(110,231,183,0.07);animation:ring-spin 35s linear infinite;}
+@keyframes ring-spin{to{transform:rotate(360deg);}}
 
-        .settings-menu .color-btn.active {
-            box-shadow: 0 0 0 4px rgba(110,231,183,0.25);
-            border-color: #fff;
-        }
+/* Floating cards around orb */
+.float-card{
+  position:absolute;
+  background:var(--surface);
+  border:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  padding:12px 18px;
+  border-radius:14px;
+  font-size:.75rem;
+  white-space:nowrap;
+  box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+.float-card.c1{top:5%;left:-10%;animation:float-card1 6s ease-in-out infinite;}
+.float-card.c2{bottom:15%;right:-12%;animation:float-card2 7s ease-in-out infinite;}
+.float-card.c3{bottom:5%;left:-5%;animation:float-card3 8s ease-in-out infinite;}
+@keyframes float-card1{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-16px) rotate(1deg);}}
+@keyframes float-card2{0%,100%{transform:translateY(0) rotate(2deg);}50%{transform:translateY(-12px) rotate(-1deg);}}
+@keyframes float-card3{0%,100%{transform:translateY(0) rotate(-1deg);}50%{transform:translateY(-20px) rotate(2deg);}}
+.float-card-icon{font-size:1.2rem;margin-bottom:4px;}
+.float-card-title{color:var(--text);font-weight:600;margin-bottom:2px;}
+.float-card-sub{color:var(--text-dim);}
 
-        #clientPreview {
-            min-width: 18rem;
-        }
-    </style>
+/* ── SECTION HEADERS ── */
+.section-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.72rem;font-weight:600;letter-spacing:.12em;
+  color:var(--mint);text-transform:uppercase;
+  margin-bottom:16px;
+}
+.section-eyebrow::before,.section-eyebrow::after{
+  content:'';display:block;height:1px;
+  background:var(--mint);opacity:.4;
+}
+.section-eyebrow::before{width:24px;}
+.section-eyebrow::after{width:16px;}
+
+.section-title{
+  font-family:'Clash Display',sans-serif;
+  font-size:clamp(2.2rem,4vw,3.5rem);
+  font-weight:700;line-height:1.1;
+  letter-spacing:-1px;
+  margin-bottom:16px;
+}
+.section-desc{
+  color:var(--text-dim);font-size:1.05rem;line-height:1.85;
+  max-width:560px;
+}
+
+/* ── REVEAL ── */
+.reveal{
+  opacity:0;transform:translateY(40px);
+  transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:.12s;}
+.reveal-delay-2{transition-delay:.24s;}
+.reveal-delay-3{transition-delay:.36s;}
+.reveal-delay-4{transition-delay:.48s;}
+
+/* ── ABOUT ── */
+#about{background:transparent;}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
+}
+
+.about-img-wrap{
+  position:relative;
+}
+.about-img-frame{
+  position:relative;border-radius:24px;overflow:hidden;
+  border:1px solid var(--border);
+}
+.about-img-frame img{
+  width:100%;display:block;
+  filter:grayscale(30%) contrast(1.05);
+  transition:filter .5s;
+}
+.about-img-frame:hover img{filter:grayscale(0%) contrast(1.1);}
+.about-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(5,12,10,.7) 0%,transparent 50%);
+  pointer-events:none;
+}
+
+/* Glowing corner brackets */
+.bracket{
+  position:absolute;width:24px;height:24px;
+  border-color:var(--mint);border-style:solid;
+  opacity:.7;
+}
+.bracket.tl{top:-8px;left:-8px;border-width:2px 0 0 2px;}
+.bracket.tr{top:-8px;right:-8px;border-width:2px 2px 0 0;}
+.bracket.bl{bottom:-8px;left:-8px;border-width:0 0 2px 2px;}
+.bracket.br{bottom:-8px;right:-8px;border-width:0 2px 2px 0;}
+
+.about-stat-row{
+  display:flex;gap:20px;margin-top:28px;
+}
+.mini-stat{
+  flex:1;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;padding:20px;
+  text-align:center;backdrop-filter:blur(10px);
+  transition:border-color .3s,transform .3s;
+}
+.mini-stat:hover{border-color:var(--border-hover);transform:translateY(-4px);}
+.mini-stat-num{
+  font-family:'Clash Display',sans-serif;
+  font-size:2rem;font-weight:700;
+  background:linear-gradient(135deg,var(--mint-bright),var(--mint-deep));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.mini-stat-label{color:var(--text-dim);font-size:.78rem;margin-top:4px;}
+
+.about-text{color:var(--text-dim);line-height:1.9;font-size:1rem;margin-bottom:24px;}
+.about-text strong{color:var(--mint);}
+
+.tech-stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+.tech-pill{
+  padding:8px 16px;
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:.78rem;color:var(--mint);
+  background:rgba(110,231,183,0.05);
+  transition:all .3s;
+}
+.tech-pill:hover{
+  border-color:var(--mint);
+  background:rgba(110,231,183,0.12);
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px var(--glow-sm);
+}
+
+/* ── TEAM SECTION ── */
+#team{background:rgba(10,20,16,0.6);}
+.team-header{text-align:center;margin-bottom:60px;}
+.team-header .section-desc{margin:0 auto;}
+
+.team-carousel-wrap{position:relative;overflow:hidden;}
+.team-track{
+  display:flex;gap:24px;
+  transition:transform .6s cubic-bezier(.22,1,.36,1);
+}
+
+.member-card{
+  flex-shrink:0;
+  width:calc(33.33% - 16px);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:24px;padding:32px;
+  backdrop-filter:blur(20px);
+  transition:all .4s cubic-bezier(.22,1,.36,1);
+  cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.member-card::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(110,231,183,0.08),transparent 60%);
+  opacity:0;transition:opacity .4s;
+}
+.member-card:hover::before{opacity:1;}
+.member-card:hover{
+  border-color:var(--border-hover);
+  transform:translateY(-8px);
+  box-shadow:0 30px 70px rgba(0,0,0,0.5),0 0 0 1px var(--border-hover);
+}
+
+.member-avatar-wrap{
+  width:80px;height:80px;
+  border-radius:50%;
+  padding:3px;
+  margin:0 auto 20px;
+  position:relative;
+}
+.member-avatar-wrap::before{
+  content:'';
+  position:absolute;inset:0;
+  border-radius:50%;
+  background:conic-gradient(from 0deg,var(--mint),var(--emerald),var(--mint-bright),var(--mint));
+  animation:orb-spin 4s linear infinite;
+}
+.member-avatar-inner{
+  position:relative;
+  width:100%;height:100%;
+  border-radius:50%;
+  background:var(--bg);
+  overflow:hidden;
+}
+.member-avatar-inner img{
+  width:100%;height:100%;object-fit:cover;
+  border-radius:50%;
+}
+.member-avatar-inner .fallback-icon{
+  width:100%;height:100%;
+  display:grid;place-items:center;
+  font-size:2rem;
+  background:linear-gradient(135deg,rgba(110,231,183,.2),rgba(52,211,153,.1));
+}
+
+.member-name{
+  font-family:'Clash Display',sans-serif;
+  font-size:1.15rem;font-weight:600;
+  text-align:center;margin-bottom:4px;
+}
+.member-role{
+  font-size:.78rem;text-align:center;
+  margin-bottom:16px;letter-spacing:.04em;
+}
+.member-bio{
+  color:var(--text-dim);font-size:.85rem;
+  line-height:1.7;text-align:center;
+  margin-bottom:20px;
+}
+.member-skills{
+  display:flex;flex-wrap:wrap;gap:6px;justify-content:center;
+  margin-bottom:20px;
+}
+.skill-chip{
+  padding:4px 12px;
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:.7rem;color:var(--text-dim);
+  background:rgba(255,255,255,0.03);
+}
+
+.member-link{
+  display:block;
+  text-align:center;
+  font-size:.8rem;font-weight:600;
+  text-decoration:none;
+  transition:color .25s;
+}
+
+.team-nav{
+  display:flex;justify-content:center;align-items:center;
+  gap:16px;margin-top:40px;
+}
+.team-nav-btn{
+  width:48px;height:48px;
+  border:1px solid var(--border);
+  border-radius:50%;
+  background:rgba(110,231,183,0.05);
+  color:var(--mint);
+  cursor:pointer;font-size:1.2rem;
+  display:grid;place-items:center;
+  transition:all .3s;
+}
+.team-nav-btn:hover{
+  border-color:var(--mint);
+  background:rgba(110,231,183,0.12);
+  box-shadow:0 0 20px var(--glow-sm);
+}
+.team-dots{display:flex;gap:8px;align-items:center;}
+.team-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--text-muted);cursor:pointer;
+  transition:all .3s;
+}
+.team-dot.active{
+  width:24px;border-radius:3px;
+  background:var(--mint);
+}
+
+/* ── PROJECTS ── */
+#projects{}
+.projects-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:50px;
+}
+.projects-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.proj-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:24px;overflow:hidden;
+  transition:all .4s cubic-bezier(.22,1,.36,1);
+  cursor:pointer;text-decoration:none;
+  display:flex;flex-direction:column;
+  backdrop-filter:blur(16px);
+}
+.proj-card:hover{
+  border-color:var(--border-hover);
+  transform:translateY(-10px);
+  box-shadow:0 40px 80px rgba(0,0,0,0.5);
+}
+.proj-thumb{
+  height:200px;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.proj-thumb-bg{
+  position:absolute;inset:0;
+  transition:transform .6s ease;
+}
+.proj-card:hover .proj-thumb-bg{transform:scale(1.08);}
+.proj-thumb-icon{
+  position:relative;z-index:1;
+  font-size:3rem;
+  filter:drop-shadow(0 0 20px rgba(110,231,183,.4));
+}
+.proj-body{padding:28px;}
+.proj-tag{
+  font-size:.7rem;font-weight:600;letter-spacing:.08em;
+  color:var(--mint);margin-bottom:12px;display:block;
+}
+.proj-title{
+  font-family:'Clash Display',sans-serif;
+  font-size:1.25rem;font-weight:600;
+  margin-bottom:10px;
+  transition:color .25s;
+}
+.proj-card:hover .proj-title{color:var(--mint);}
+.proj-desc{color:var(--text-dim);font-size:.875rem;line-height:1.7;margin-bottom:20px;}
+.proj-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.proj-tech span{
+  padding:3px 10px;
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:.68rem;color:var(--text-dim);
+}
+.proj-arrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.82rem;font-weight:600;
+  transition:gap .3s;
+}
+.proj-card:hover .proj-arrow{gap:10px;}
+
+/* ── WORKFLOW ── */
+#workflow{background:rgba(6,14,11,0.7);}
+.workflow-header{text-align:center;margin-bottom:70px;}
+.workflow-header .section-desc{margin:0 auto;}
+
+.workflow-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;
+  position:relative;
+}
+.workflow-steps::before{
+  content:'';
+  position:absolute;
+  top:56px;left:calc(12.5% + 28px);
+  right:calc(12.5% + 28px);
+  height:1px;
+  background:linear-gradient(90deg,var(--mint),rgba(110,231,183,.2),var(--mint));
+  opacity:.3;
+}
+
+.step-card{
+  padding:20px;
+  text-align:center;
+  position:relative;
+}
+.step-num{
+  width:56px;height:56px;
+  border-radius:50%;
+  border:1px solid var(--border-hover);
+  display:grid;place-items:center;
+  margin:0 auto 24px;
+  font-family:'Clash Display',sans-serif;
+  font-size:1.1rem;font-weight:700;
+  color:var(--mint);
+  background:var(--bg);
+  position:relative;z-index:1;
+  transition:all .4s;
+}
+.step-card:hover .step-num{
+  background:rgba(110,231,183,0.1);
+  box-shadow:0 0 30px var(--glow);
+  transform:scale(1.1);
+}
+.step-title{
+  font-family:'Clash Display',sans-serif;
+  font-size:1.15rem;font-weight:600;
+  margin-bottom:12px;
+}
+.step-desc{color:var(--text-dim);font-size:.875rem;line-height:1.7;}
+
+/* ── CTA ── */
+#cta{text-align:center;overflow:hidden;}
+.cta-inner{
+  position:relative;
+  padding:80px;
+  border:1px solid var(--border);
+  border-radius:32px;
+  background:linear-gradient(135deg,rgba(16,28,22,.9),rgba(5,150,105,.08));
+  backdrop-filter:blur(20px);
+  overflow:hidden;
+}
+.cta-glow{
+  position:absolute;
+  border-radius:50%;
+  background:var(--mint);
+  filter:blur(80px);
+  opacity:.08;
+  pointer-events:none;
+}
+.cta-glow-1{width:400px;height:400px;top:-100px;right:-100px;}
+.cta-glow-2{width:300px;height:300px;bottom:-80px;left:-80px;}
+
+.cta-title{
+  font-family:'Clash Display',sans-serif;
+  font-size:clamp(2rem,4vw,3.5rem);
+  font-weight:700;letter-spacing:-1px;
+  margin-bottom:20px;
+  position:relative;z-index:1;
+}
+.cta-desc{
+  color:var(--text-dim);font-size:1.05rem;
+  max-width:500px;margin:0 auto 40px;
+  line-height:1.8;position:relative;z-index:1;
+}
+.cta-note{color:var(--text-muted);font-size:.8rem;margin-top:20px;position:relative;z-index:1;}
+
+/* ── AI CHAT ── */
+#ai-chat{
+  position:fixed;bottom:90px;right:24px;
+  z-index:500;width:340px;
+  max-width:calc(100vw - 40px);
+  background:rgba(7,15,11,0.97);
+  border:1px solid var(--border-hover);
+  border-radius:24px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.6);
+  overflow:hidden;
+  display:none;
+  animation:chat-open .35s cubic-bezier(.22,1,.36,1);
+}
+@keyframes chat-open{from{opacity:0;transform:translateY(20px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+
+.chat-header{
+  padding:18px 20px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(110,231,183,0.03);
+}
+.chat-head-info{display:flex;align-items:center;gap:10px;}
+.chat-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--mint),var(--emerald));
+  display:grid;place-items:center;font-size:1rem;
+}
+.chat-name{font-weight:600;font-size:.9rem;}
+.chat-status{font-size:.72rem;color:var(--mint);}
+.chat-close{
+  background:transparent;border:none;
+  color:var(--text-dim);cursor:pointer;font-size:1.2rem;
+  padding:4px;transition:color .2s;
+}
+.chat-close:hover{color:var(--text);}
+
+.chat-messages{
+  padding:16px;
+  min-height:160px;max-height:240px;
+  overflow-y:auto;
+  display:flex;flex-direction:column;gap:12px;
+}
+.chat-messages::-webkit-scrollbar{width:4px;}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--border);}
+
+.chat-msg{
+  padding:10px 14px;
+  border-radius:14px;
+  font-size:.82rem;line-height:1.6;
+  max-width:85%;
+  animation:msg-pop .3s cubic-bezier(.22,1,.36,1);
+}
+@keyframes msg-pop{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.chat-msg.ai{
+  background:rgba(110,231,183,0.08);
+  border:1px solid var(--border);
+  align-self:flex-start;color:var(--text);
+}
+.chat-msg.user{
+  background:rgba(110,231,183,0.15);
+  border:1px solid rgba(110,231,183,0.25);
+  align-self:flex-end;color:var(--text);
+}
+
+.chat-suggestions{
+  padding:0 16px 12px;
+  display:flex;flex-wrap:wrap;gap:6px;
+}
+.chat-sug-btn{
+  padding:6px 12px;
+  border:1px solid var(--border);
+  border-radius:100px;
+  background:rgba(110,231,183,0.04);
+  color:var(--text-dim);
+  font-size:.72rem;cursor:pointer;
+  transition:all .25s;
+}
+.chat-sug-btn:hover{
+  border-color:var(--mint);color:var(--mint);
+  background:rgba(110,231,183,0.1);
+}
+
+.chat-input-row{
+  padding:12px 16px 16px;
+  border-top:1px solid var(--border);
+  display:flex;gap:8px;
+}
+.chat-input{
+  flex:1;padding:10px 14px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);
+  border-radius:12px;color:var(--text);
+  font-size:.82rem;outline:none;
+  font-family:'Satoshi',sans-serif;
+  transition:border-color .25s;
+}
+.chat-input::placeholder{color:var(--text-muted);}
+.chat-input:focus{border-color:var(--border-hover);}
+.chat-send{
+  width:40px;height:40px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--mint),var(--emerald));
+  border:none;color:#050c0a;
+  cursor:pointer;font-size:1rem;
+  display:grid;place-items:center;
+  transition:all .25s;
+}
+.chat-send:hover{transform:scale(1.05);box-shadow:0 4px 16px var(--glow-sm);}
+
+/* AI FAB */
+#ai-fab{
+  position:fixed;bottom:24px;right:24px;z-index:501;
+  width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,var(--mint),var(--emerald));
+  border:none;cursor:pointer;
+  display:grid;place-items:center;
+  box-shadow:0 8px 32px var(--glow);
+  transition:all .3s cubic-bezier(.22,1,.36,1);
+  animation:fade-up .9s ease 1s both;
+}
+#ai-fab:hover{transform:scale(1.12);box-shadow:0 16px 48px var(--glow);}
+#ai-fab svg{width:24px;height:24px;color:#050c0a;}
+
+/* ── FOOTER ── */
+footer{
+  padding:60px;
+  border-top:1px solid var(--border);
+  background:rgba(5,8,6,0.9);
+}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:60px;
+}
+.footer-brand p{color:var(--text-dim);font-size:.875rem;line-height:1.8;margin-top:16px;max-width:260px;}
+.footer-col h4{
+  font-weight:600;font-size:.875rem;
+  margin-bottom:20px;letter-spacing:.03em;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.footer-col li a{
+  color:var(--text-dim);text-decoration:none;font-size:.85rem;
+  transition:color .25s;
+}
+.footer-col li a:hover{color:var(--mint);}
+.footer-bottom{
+  max-width:1200px;margin:40px auto 0;
+  padding-top:24px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-bottom p{color:var(--text-muted);font-size:.82rem;}
+.social-row{display:flex;gap:12px;}
+.social-btn{
+  width:36px;height:36px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  display:grid;place-items:center;
+  color:var(--text-dim);text-decoration:none;
+  font-size:.85rem;
+  transition:all .25s;
+}
+.social-btn:hover{border-color:var(--mint);color:var(--mint);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  section{padding:80px 30px;}
+  #hero{padding:0 30px;}
+  .hero-inner,.about-grid{grid-template-columns:1fr;gap:50px;}
+  .hero-3d{display:none;}
+  .member-card{width:calc(50% - 12px);}
+  .projects-grid{grid-template-columns:repeat(2,1fr);}
+  .workflow-steps{grid-template-columns:repeat(2,1fr);}
+  .workflow-steps::before{display:none;}
+  footer{padding:60px 30px;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:40px;}
+  nav{padding:20px 30px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+}
+
+@media(max-width:640px){
+  section{padding:60px 20px;}
+  #hero{padding:0 20px;padding-top:100px;}
+  .hero-stats{flex-direction:column;gap:20px;}
+  .projects-grid,.workflow-steps{grid-template-columns:1fr;}
+  .member-card{width:100%;}
+  .projects-header{flex-direction:column;gap:20px;align-items:flex-start;}
+  nav{padding:16px 20px;}
+  .cta-inner{padding:40px 24px;}
+  footer{padding:40px 20px;}
+  .footer-inner{grid-template-columns:1fr;gap:30px;}
+  .footer-bottom{flex-direction:column;gap:16px;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-stat-row{flex-direction:column;}
+}
+</style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body>
 
-    <!-- Settings Panel -->
-    <div id="settingsPanel" class="fixed top-24 right-6 z-50 flex flex-col items-end gap-3">
-        <button onclick="toggleSettings()" class="settings-button flex items-center justify-center w-14 h-14 rounded-full bg-wenpyid text-black shadow-2xl hover:scale-105 transition">
-            <span class="text-xl">⚙️</span>
-        </button>
-        <div id="settingsMenu" class="hidden w-80 rounded-3xl border border-wenpyid/30 bg-black/90 backdrop-blur-xl p-5 text-sm text-gray-200 shadow-2xl settings-menu">
-            <div class="flex items-center justify-between mb-4">
-                <div>
-                    <p class="text-xs uppercase opacity-70 tracking-[0.2em]">Pengaturan</p>
-                    <h2 class="text-lg font-bold mt-1">Kontrol Tema & Client</h2>
-                </div>
-                <span class="text-2xl">🎛️</span>
-            </div>
+<div class="noise"></div>
+<canvas id="canvas3d"></canvas>
 
-            <div class="mb-5">
-                <p class="font-semibold mb-2">Lihat Client</p>
-                <button onclick="openClientPage()" class="w-full px-4 py-3 rounded-2xl bg-wenpyid text-black font-bold hover:bg-wenpyid-dark transition">
-                    Buka Client Page
-                </button>
-                <p class="mt-2 text-xs text-gray-400">Buka halaman client terpisah dengan riwayat pengguna.</p>
-            </div>
+<div id="cur"></div>
+<div id="cur-ring"></div>
 
-            <div class="mb-5">
-                <p class="font-semibold mb-3">Mode Tema</p>
-                <button onclick="toggleTheme()" id="themeToggleBtn" class="w-full px-4 py-3 rounded-2xl bg-white text-slate-900 font-semibold hover:bg-slate-200 transition">
-                    Mode Terang
-                </button>
-            </div>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <div class="logo-orb">
+      <div class="logo-inner">
+        <img src="ppbg.png" alt="Wenpy" onerror="this.style.display='none';this.parentElement.innerHTML='🌿'">
+      </div>
+    </div>
+    <span class="logo-name">Wenpy.Id</span>
+  </a>
+  <div class="nav-links">
+    <a href="#about">Tentang</a>
+    <a href="#team">Tim</a>
+    <a href="#projects">Portofolio</a>
+    <a href="#workflow">Proses</a>
+    <a href="https://wa.me/6285178549054" target="_blank" class="nav-cta">Konsultasi Gratis</a>
+  </div>
+  <button class="hamburger" id="ham">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mob-nav">
+  <a href="#about" onclick="closeMob()">Tentang</a>
+  <a href="#team" onclick="closeMob()">Tim</a>
+  <a href="#projects" onclick="closeMob()">Portofolio</a>
+  <a href="#workflow" onclick="closeMob()">Proses</a>
+  <a href="https://wa.me/6285178549054" target="_blank" onclick="closeMob()">Konsultasi Gratis ↗</a>
+</div>
 
-            <div class="mb-3">
-                <p class="font-semibold mb-3">Ubah Warna Accent</p>
-                <div class="grid grid-cols-5 gap-3">
-                    <button class="color-btn active w-11 h-11 rounded-full bg-[#6ee7b7]" onclick="changeAccent('#6ee7b7', '#34d399', '#065f46', this)" title="Mint"></button>
-                    <button class="color-btn w-11 h-11 rounded-full bg-[#f472b6]" onclick="changeAccent('#f472b6', '#ec4899', '#be185d', this)" title="Pink"></button>
-                    <button class="color-btn w-11 h-11 rounded-full bg-[#60a5fa]" onclick="changeAccent('#60a5fa', '#3b82f6', '#1d4ed8', this)" title="Blue"></button>
-                    <button class="color-btn w-11 h-11 rounded-full bg-[#fde68a]" onclick="changeAccent('#fde68a', '#fbbf24', '#d97706', this)" title="Yellow"></button>
-                    <button class="color-btn w-11 h-11 rounded-full bg-[#a78bfa]" onclick="changeAccent('#a78bfa', '#8b5cf6', '#7c3aed', this)" title="Purple"></button>
-                </div>
-            </div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="badge">
+        <div class="badge-dot"></div>
+        Tim Developer Profesional Siap Membantu
+      </div>
+      <h1 class="hero-title">
+        <span class="line"><span>Website</span></span>
+        <span class="line"><span class="mint-text">Modern &amp;</span></span>
+        <span class="line"><span>Berdampak</span></span>
+      </h1>
+      <p class="hero-desc">
+        Wenpyid adalah kolektif developer berpengalaman yang menghadirkan solusi digital presisi tinggi—dari konsep hingga deployment—dengan desain estetik dan performa optimal.
+      </p>
+      <div class="hero-btns">
+        <a href="https://wa.me/6285178549054?text=Halo%20Wenpyid%2C%20saya%20ingin%20konsultasi%20pembuatan%20website" target="_blank" class="btn-primary">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Konsultasi via WhatsApp
+        </a>
+        <a href="#projects" class="btn-outline">Lihat Portofolio →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num" data-count="8">0</div>
+          <div class="stat-label">Developer Aktif</div>
         </div>
+        <div class="stat">
+          <div class="stat-num" data-count="2">&lt; 2s</div>
+          <div class="stat-label">Load Time Target</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">SEO Optimized</div>
+        </div>
+      </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo Wenpyid -->
-            <a href="" target="_blank" class="flex items-center gap-3 group">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-wenpyid-light to-wenpyid-deep p-0.5 animate-float group-hover:shadow-[0_0_20px_rgba(110,231,183,0.5)] transition-shadow">
-                    <div class="w-full h-full rounded-full bg-gray-900 flex items-center justify-center overflow-hidden">
-                        <img src="ppbg.png" alt="Wenpyid Logo" class="w-10 h-10 object-contain group-hover:scale-110 transition-transform">
-                    </div>
-                </div>
-                <span class="text-2xl font-bold wenpyid-text group-hover:opacity-80 transition-opacity">Wenpy.Id</span>
-            </a>
-            
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#about" class="text-gray-300 hover:text-wenpyid transition-colors">Tentang</a>
-                <a href="#projects" class="text-gray-300 hover:text-wenpyid transition-colors">Portofolio</a>
-                <a href="#workflow" class="text-gray-300 hover:text-wenpyid transition-colors">Proses</a>
-                <a href="#team" class="text-gray-300 hover:text-wenpyid transition-colors">Tim</a>
-                <a href="https://wa.me/6285178549054?text=Halo%20Wenpyid%20Team%2C%0A%0ASaya%20ingin%20konsultasi%20pembuatan%20website%20dan%20berminat%20untuk%20melihat%20portofolio%20para%20programmer%20yang%20bekerja%20di%20Wenpyid.%0A%0AMohon%20informasi%20mengenai%3A%0A1.%20Portofolio%20individu%20masing-masing%20developer%0A2.%20Spesialisasi%20dan%20tech%20stack%20tim%0A3.%20Availability%20untuk%20proyek%20baru%0A%0ATerima%20kasih!" 
-                   target="_blank"
-                   class="px-6 py-2 bg-wenpyid/20 hover:bg-wenpyid/30 text-wenpyid border border-wenpyid/50 rounded-full transition-all hover:shadow-[0_0_20px_rgba(110,231,183,0.3)]">
-                    Hubungi Tim
-                </a>
-            </div>
+    <div class="hero-3d" id="hero3d">
+      <div class="hero-orb-wrap">
+        <canvas id="hero-canvas"></canvas>
+        <div class="orb-ring"></div>
+        <div class="orb-ring"></div>
+        <div class="orb-ring"></div>
+      </div>
+      <div class="float-card c1">
+        <div class="float-card-icon">⚡</div>
+        <div class="float-card-title">Load &lt; 2s</div>
+        <div class="float-card-sub">Performa Optimal</div>
+      </div>
+      <div class="float-card c2">
+        <div class="float-card-icon">🎨</div>
+        <div class="float-card-title">UI/UX Premium</div>
+        <div class="float-card-sub">Desain Modern</div>
+      </div>
+      <div class="float-card c3">
+        <div class="float-card-icon">🛡️</div>
+        <div class="float-card-title">Secure &amp; Scalable</div>
+        <div class="float-card-sub">Arsitektur Solid</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-img-frame">
+          <img src="grp.jpg" alt="Wenpyid Team" onerror="this.src='';this.style.minHeight='300px';this.style.background='linear-gradient(135deg,rgba(110,231,183,.1),rgba(5,150,105,.05))'">
+          <div class="about-img-overlay"></div>
+          <div class="bracket tl"></div>
+          <div class="bracket tr"></div>
+          <div class="bracket bl"></div>
+          <div class="bracket br"></div>
+        </div>
+        <div class="about-stat-row">
+          <div class="mini-stat reveal reveal-delay-1">
+            <div class="mini-stat-num">8+</div>
+            <div class="mini-stat-label">Developer</div>
+          </div>
+          <div class="mini-stat reveal reveal-delay-2">
+            <div class="mini-stat-num">Fast</div>
+            <div class="mini-stat-label">Delivery</div>
+          </div>
+          <div class="mini-stat reveal reveal-delay-3">
+            <div class="mini-stat-num">A+</div>
+            <div class="mini-stat-label">Quality</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="section-eyebrow">Tentang Wenpyid</div>
+        <h2 class="section-title">Tim Developer dengan <span class="mint-text">Dedikasi Tinggi</span></h2>
+        <p class="about-text">
+          <strong>Wenpyid</strong> adalah kolektif developer profesional yang bergerak atas dasar kesamaan visi: obsesi terhadap detail presisi dan optimasi performa. Kami beroperasi sebagai tim terdesentralisasi, di mana setiap keputusan lahir dari diskusi teknis yang mendalam.
+        </p>
+        <p class="about-text">
+          Kami bukan sekadar vendor coding—kami adalah partner teknologi yang percaya bahwa website yang lambat adalah representasi bisnis yang lemah. Setiap anggota membawa spesialisasi unik: dari frontend magician hingga backend architect.
+        </p>
+        <div class="tech-stack">
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Laravel</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">PHP</span>
+          <span class="tech-pill">PostgreSQL</span>
+          <span class="tech-pill">Figma</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">Python</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="team-header reveal">
+      <div class="section-eyebrow">Tim Profesional</div>
+      <h2 class="section-title">Para Programmer <span class="mint-text">Wenpyid</span></h2>
+      <p class="section-desc">Kenali spesialisasi dan portofolio individu dari setiap developer yang akan mengerjakan proyek Anda.</p>
+    </div>
+
+    <div class="team-carousel-wrap reveal">
+      <div class="team-track" id="team-track">
+
+        <div class="member-card" onclick="window.open('https://raihaan-personal.vercel.app/','_blank')">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-inner">
+              <img src="IMG_2081.CR2.jpg" alt="Muh Raihan Humris" onerror="this.parentElement.innerHTML='<div class=fallback-icon>👨‍💻</div>'">
+            </div>
+          </div>
+          <div class="member-name">Muh Raihan Humris</div>
+          <div class="member-role" style="color:#6ee7b7">Full Stack Developer</div>
+          <p class="member-bio">Spesialis full stack dan web developer. Alumni MAKN ENDE, NTT.</p>
+          <div class="member-skills">
+            <span class="skill-chip">React</span><span class="skill-chip">Node.js</span><span class="skill-chip">Laravel</span><span class="skill-chip">PHP</span>
+          </div>
+          <a href="https://raihaan-personal.vercel.app/" target="_blank" class="member-link" style="color:#6ee7b7">Lihat Portofolio →</a>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black/95 backdrop-blur-md border-t border-white/10">
-            <div class="px-6 py-4 space-y-4">
-                <a href="#about" class="block text-gray-300 hover:text-wenpyid transition-colors py-2">Tentang</a>
-                <a href="#projects" class="block text-gray-300 hover:text-wenpyid transition-colors py-2">Portofolio</a>
-                <a href="#workflow" class="block text-gray-300 hover:text-wenpyid transition-colors py-2">Proses</a>
-                <a href="#team" class="block text-gray-300 hover:text-wenpyid transition-colors py-2">Tim</a>
-                <a href="https://wa.me/6285178549054?text=Halo%20Wenpyid%20Team%2C%0A%0ASaya%20ingin%20konsultasi%20pembuatan%20website%20dan%20berminat%20untuk%20melihat%20portofolio%20para%20programmer%20yang%20bekerja%20di%20Wenpyid.%0A%0AMohon%20informasi%20mengenai%3A%0A1.%20Portofolio%20individu%20masing-masing%20developer%0A2.%20Spesialisasi%20dan%20tech%20stack%20tim%0A3.%20Availability%20untuk%20proyek%20baru%0A%0ATerima%20kasih!" 
-                   target="_blank"
-                   class="block px-6 py-3 bg-wenpyid/20 hover:bg-wenpyid/30 text-wenpyid border border-wenpyid/50 rounded-full transition-all hover:shadow-[0_0_20px_rgba(110,231,183,0.3)] text-center">
-                    Hubungi Tim
-                </a>
+        <div class="member-card" onclick="window.open('https://wa.me/6281234567892','_blank')">
+          <div class="member-avatar-wrap" style="--c1:#a855f7;--c2:#7c3aed">
+            <div class="member-avatar-inner">
+              <img src="a.jpeg" alt="Alif Firmansari Prendje" onerror="this.parentElement.innerHTML='<div class=fallback-icon>🎨</div>'">
             </div>
+          </div>
+          <div class="member-name">Alif Firmansari Prendje</div>
+          <div class="member-role" style="color:#a855f7">UI/UX & Backend Dev</div>
+          <p class="member-bio">Ahli desain web modern dan profesional. Alumni MAKN ENDE.</p>
+          <div class="member-skills">
+            <span class="skill-chip">Figma</span><span class="skill-chip">Laravel</span><span class="skill-chip">User Research</span>
+          </div>
+          <a href="https://wa.me/6281234567892" target="_blank" class="member-link" style="color:#a855f7">Hubungi →</a>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
-        <!-- Background Effects -->
-        <div class="absolute top-20 right-10 w-64 h-64 md:w-96 md:h-96 bg-wenpyid/20 rounded-full blur-[100px] animate-glow-pulse"></div>
-        <div class="absolute bottom-20 left-10 w-48 h-48 md:w-72 md:h-72 bg-wenpyid-dark/20 rounded-full blur-[80px] animate-glow-pulse" style="animation-delay: 1.5s;"></div>
-        
-        <div class="max-w-6xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-wenpyid/30 mb-8 backdrop-blur-sm">
-                <span class="w-2 h-2 rounded-full bg-wenpyid animate-pulse"></span>
-                <span class="text-sm text-gray-300">Tim Developer Profesional Siap Membantu</span>
+        <div class="member-card" onclick="window.open('https://farisulfahmi.github.io/portofolio-fahmi/#about','_blank')">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-inner">
+              <img src="hero1.png" alt="Farisul Fahmi" onerror="this.parentElement.innerHTML='<div class=fallback-icon>⚙️</div>'">
             </div>
-            
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                Website <span class="wenpyid-text">Modern</span> oleh Tim <span class="wenpyid-text">Profesional</span> yang <span class="wenpyid-text">Siap Produksi</span>
-            </h1>
-            
-            <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-                Wenpyid adalah tim developer berpengalaman yang menghadirkan solusi digital presisi tinggi—dari konsep hingga deployment—dengan desain estetik dan performa optimal.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <!-- WhatsApp dengan request portofolio tim -->
-                <a href="https://wa.me/6285178549054?text=Halo%20Wenpyid%20Team%2C%0A%0ASaya%20ingin%20konsultasi%20pembuatan%20website%20dan%20berminat%20untuk%20melihat%20portofolio%20para%20programmer%20yang%20bekerja%20di%20Wenpyid.%0A%0AMohon%20informasi%20mengenai%3A%0A1.%20Portofolio%20individu%20masing-masing%20developer%0A2.%20Spesialisasi%20dan%20tech%20stack%20tim%0A3.%20Availability%20untuk%20proyek%20baru%0A%0ATerima%20kasih!" 
-                   target="_blank"
-                   class="group relative px-6 py-3 md:px-8 md:py-4 text-sm md:text-base wenpyid-gradient text-black font-bold rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(110,231,183,0.5)] flex items-center justify-center gap-2">
-                    <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
-                    <span>Lihat Portofolio Tim via WhatsApp</span>
-                </a>
-                <a href="#projects" class="px-6 py-3 md:px-8 md:py-4 text-sm md:text-base border border-wenpyid/30 hover:border-wenpyid text-wenpyid font-medium rounded-full transition-all duration-300 hover:bg-wenpyid/10">
-                    Jelajahi Proyek Kami
-                </a>
-            </div>
-            
-            <div class="mt-16 flex justify-center gap-8 text-gray-500 text-sm">
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-wenpyid" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                    <span>Tim Developer Terkurasi</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-wenpyid" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    <span>Load Time &lt; 2s</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-wenpyid" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span>SEO Optimized</span>
-                </div>
-            </div>
+          </div>
+          <div class="member-name">Farisul Fahmi</div>
+          <div class="member-role" style="color:#f87171">Backend Developer</div>
+          <p class="member-bio">Spesialis backend, API design, database optimization, dan server architecture.</p>
+          <div class="member-skills">
+            <span class="skill-chip">Node.js</span><span class="skill-chip">Python</span><span class="skill-chip">PostgreSQL</span>
+          </div>
+          <a href="https://farisulfahmi.github.io/portofolio-fahmi/#about" target="_blank" class="member-link" style="color:#f87171">Lihat Portofolio →</a>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section class="py-20 px-6 scroll-reveal" id="about">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex items-center gap-4 mb-12">
-                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-wenpyid to-transparent"></div>
-                <span class="text-wenpyid font-medium tracking-wider uppercase text-sm">Tentang Wenpyid</span>
-                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-wenpyid to-transparent"></div>
+        <div class="member-card" onclick="window.open('https://ucup2009.github.io/Personal_Portfolio_Yusuf/','_blank')">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-inner">
+              <img src="U.jpeg" alt="Yusuf" onerror="this.parentElement.innerHTML='<div class=fallback-icon>📊</div>'">
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="relative">
-                    <div class="aspect-square rounded-2xl bg-gradient-to-br from-wenpyid/30 to-wenpyid-deep/30 p-1">
-                        <div class="w-full h-full rounded-2xl bg-gray-900 flex items-center justify-center relative overflow-hidden">
-                            <img src="grp.jpg" alt="Wenpyid Team Mascot" class="w-3/4 h-3/4 object-contain animate-float">
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
-                        </div>
-                    </div>
-                    <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-wenpyid/20 rounded-full blur-3xl"></div>
-                </div>
-                
-                <div class="space-y-6">
-                    <h2 class="text-3xl md:text-4xl font-bold">Tim Developer dengan <span class="wenpyid-text">Dedikasi Tinggi</span></h2>
-                    <div class="space-y-4 text-gray-400 leading-relaxed">
-                        <p>
-                            <strong class="text-white">Wenpyid</strong> Wenpyid adalah sebuah kolektif developer profesional yang bergerak atas dasar kesamaan visi: obsesi terhadap detail presisi dan optimasi performa. Kami beroperasi sebagai tim yang terdesentralisasi, di mana setiap keputusan lahir dari diskusi teknis yang mendalam, memastikan setiap proyek mendapatkan sentuhan terbaik dari berbagai sudut pandang ahli.
-
-Kami bukan sekadar vendor coding—kami adalah partner teknologi yang percaya bahwa website yang lambat adalah representasi bisnis yang lemah. Tanpa sekat hierarki, komunikasi kami dengan klien menjadi lebih organik, transparan, dan berorientasi pada solusi teknis yang nyata. 
-                        <p>
-                            Setiap anggota tim kami membawa spesialisasi unik: dari frontend magician yang menguasai animasi kompleks, backend architect yang mendesain sistem skalabel, hingga UI/UX craftsman yang memastikan setiap pixel berbicara. Di Wenpyid, kode bersih bukan standar—itu adalah janji kolektif kami kepada setiap klien.
-                        </p>
-                    </div>
-                    
-                    <div class="flex flex-wrap gap-3">
-                        <span class="tech-pill px-4 py-2 rounded-full text-sm text-wenpyid">React</span>
-                        <span class="tech-pill px-4 py-2 rounded-full text-sm text-wenpyid">Html</span>
-                        <span class="tech-pill px-4 py-2 rounded-full text-sm text-wenpyid">CSS</span>
-                        <span class="tech-pill px-4 py-2 rounded-full text-sm text-wenpyid">Node.js</span>
-                        <span class="tech-pill px-4 py-2 rounded-full text-sm text-wenpyid">PHP</span>
-                        <span class="tech-pill px-4 py-2 rounded-full text-sm text-wenpyid">PostgreSQL</span>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="member-name">Yusuf</div>
+          <div class="member-role" style="color:#4ade80">Data Analyst</div>
+          <p class="member-bio">Ahli analisis data, business intelligence, data visualization, dan ML insights.</p>
+          <div class="member-skills">
+            <span class="skill-chip">Python</span><span class="skill-chip">Tableau</span><span class="skill-chip">SQL</span>
+          </div>
+          <a href="https://ucup2009.github.io/Personal_Portfolio_Yusuf/" target="_blank" class="member-link" style="color:#4ade80">Lihat Portofolio →</a>
         </div>
-    </section>
 
-    <!-- Team Section - Portofolio Programmer -->
-    <section class="py-20 px-6 scroll-reveal bg-white/5" id="team">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-wenpyid font-medium tracking-wider uppercase text-sm">Tim Profesional</span>
-                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Para Programmer Wenpyid</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Kenali spesialisasi dan portofolio individu dari setiap developer yang akan mengerjakan proyek Anda.</p>
+        <div class="member-card" onclick="window.open('https://raya-hama.vercel.app/','_blank')">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-inner">
+              <img src="Raya.jpeg" alt="M Albar Raya Hama" onerror="this.parentElement.innerHTML='<div class=fallback-icon>🖥️</div>'">
             </div>
-            
-            <div class="relative overflow-hidden">
-                <div class="flex gap-8 transition-transform duration-300" id="team-carousel">
-                    <!-- Team Member 1 -->
-                    <div class="glow-border card-hover group cursor-pointer flex-shrink-0 w-full md:w-1/3" onclick="window.open('https://raihaan-personal.vercel.app/', '_blank')">
-                        <div class="p-4 md:p-6 h-full flex flex-col bg-gray-900/50">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-wenpyid to-wenpyid-deep p-1 mb-4 mx-auto">
-                                <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
-                                    <img src="IMG_2081.CR2.jpg" alt="Muh Raihan Humris" class="w-full h-full object-cover rounded-full">
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold text-center mb-1">Muh Raihan Humris</h3>
-                            <p class="text-wenpyid text-sm text-center mb-4">Full stack developer</p>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow text-center">
-                                Spesialis full stack dan web developer, Asal Nusa Tengara Timur sekaligus Alumni MAKN ENDE.
-                            </p>
-                            <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">React</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Node.js</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Laravel</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">PHP</span>
-                            </div>
-                            <a href="https://raihaan-personal.vercel.app/" 
-                               target="_blank"
-                               class="text-center text-wenpyid hover:text-wenpyid-light text-sm font-medium transition-colors">
-                                Lihat Portofolio Lengkap →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 2 -->
-                    <div class="glow-border card-hover group cursor-pointer flex-shrink-0 w-full md:w-1/3" onclick="window.open('https://wa.me/6281234567891?text=Halo%2C%20saya%20ingin%20melihat%20portofolio%20lengkap%20Kholid%20Usman%20A.S%20dari%20Wenpyid', '_blank')">
-                        <div class="p-4 md:p-6 h-full flex flex-col bg-gray-900/50">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 p-1 mb-4 mx-auto">
-                                <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
-                                    <img src="https://via.placeholder.com/80x80/3b82f6/ffffff?text=KU" alt="Kholid Usman A.S" class="w-full h-full object-cover rounded-full">
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold text-center mb-1">Kholid Usman A.S</h3>
-                            <p class="text-blue-400 text-sm text-center mb-4">UI/UX dev</p>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow text-center">
-                                Magician animasi web dengan keahlian GSAP, Three.js, dan micro-interactions. Fokus pada pengalaman visual yang memukau.
-                            </p>
-                            <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Figma</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Stitch</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Balsamic</span>
-                            </div>
-                            <a href="https://wa.me/6281234567891?text=Halo%2C%20saya%20ingin%20melihat%20portofolio%20lengkap%20Kholid%20Usman%20A.S%20dari%20Wenpyid" 
-                               target="_blank"
-                               class="text-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
-                                Lihat Portofolio Lengkap →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 3 -->
-                    <div class="glow-border card-hover group cursor-pointer flex-shrink-0 w-full md:w-1/3" onclick="window.open('https://wa.me/6281234567892?text=Halo%2C%20saya%20ingin%20melihat%20portofolio%20lengkap%20Alif%20Firmansari%20P%20dari%20Wenpyid', '_blank')">
-                        <div class="p-4 md:p-6 h-full flex flex-col bg-gray-900/50">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 mb-4 mx-auto">
-                                <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
-                                    <img src="a.jpeg" alt="Alif Firmansari P" class="w-full h-full object-cover rounded-full">
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold text-center mb-1">Alif Firmansari Prendje</h3>
-                            <p class="text-purple-400 text-sm text-center mb-4">UI/UX Designer & Backend Developer</p>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow text-center">
-                                Alumni MAKN ENDE dengan spesialis mendesain web dengan profesional dan moderen   .
-                            </p>
-                            <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Figma</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Laravel</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">User Research</span>
-                            </div>
-                            <a href="https://wa.me/6281234567892?text=Halo%2C%20saya%20ingin%20melihat%20portofolio%20lengkap%20Alif%20Firmansari%20P%20dari%20Wenpyid" 
-                               target="_blank"
-                               class="text-center text-purple-400 hover:text-purple-300 text-sm font-medium transition-colors">
-                                Lihat Portofolio Lengkap →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 4 -->
-                    <div class="glow-border card-hover group cursor-pointer flex-shrink-0 w-full md:w-1/3" onclick="window.open('https://farisulfahmi.github.io/portofolio-fahmi/#about', '_blank')">
-                        <div class="p-4 md:p-6 h-full flex flex-col bg-gray-900/50">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-red-400 to-red-600 p-1 mb-4 mx-auto">
-                                <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
-                                    <img src="hero1.png" alt="Farisul Fahmi" class="w-full h-full object-cover rounded-full">
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold text-center mb-1">Farisul Fahmi</h3>
-                            <p class="text-red-400 text-sm text-center mb-4">Backend Developer</p>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow text-center">
-                                Spesialis backend development dengan fokus pada API design, database optimization, dan server architecture.
-                            </p>
-                            <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Node.js</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Python</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">PostgreSQL</span>
-                            </div>
-                            <a href="https://wa.me/6281234567893?text=Halo%2C%20saya%20ingin%20melihat%20portofolio%20lengkap%20Farisul%20Fahmi%20dari%20Wenpyid" 
-                               target="_blank"
-                               class="text-center text-red-400 hover:text-red-300 text-sm font-medium transition-colors">
-                                Lihat Portofolio Lengkap →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 5 -->
-                    <div class="glow-border card-hover group cursor-pointer flex-shrink-0 w-full md:w-1/3" onclick="window.open('https://ucup2009.github.io/Personal_Portfolio_Yusuf/', '_blank')">
-                        <div class="p-4 md:p-6 h-full flex flex-col bg-gray-900/50">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 p-1 mb-4 mx-auto">
-                                <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
-                                    <img src="U.jpeg" alt="Yusuf" class="w-full h-full object-cover rounded-full">
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold text-center mb-1">Yusuf</h3>
-                            <p class="text-green-400 text-sm text-center mb-4">Data Analyst</p>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow text-center">
-                                Ahli analisis data dengan keahlian dalam business intelligence, data visualization, dan machine learning insights.
-                            </p>
-                            <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Python</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Tableau</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">SQL</span>
-                            </div>
-                            <a href="https://wa.me/6281234567894?text=Halo%2C%20saya%20ingin%20melihat%20portofolio%20lengkap%20Yusuf%20dari%20Wenpyid" 
-                               target="_blank"
-                               class="text-center text-green-400 hover:text-green-300 text-sm font-medium transition-colors">
-                                Lihat Portofolio Lengkap →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 6 -->
-                    <div class="glow-border card-hover group cursor-pointer flex-shrink-0 w-full md:w-1/3" onclick="window.open('https://wa.me/6281234567895?text=Halo%2C%20saya%20ingin%20melihat%20portofolio%20lengkap%20Albar%20Raya%20Hama%20dari%20Wenpyid', '_blank')">
-                        <div class="p-4 md:p-6 h-full flex flex-col bg-gray-900/50">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 p-1 mb-4 mx-auto">
-                                <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
-                                    <img src="https://via.placeholder.com/80x80/ff6b35/ffffff?text=ARH" alt="Albar Raya Hama" class="w-full h-full object-cover rounded-full">
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold text-center mb-1">Albar Raya Hama</h3>
-                            <p class="text-orange-400 text-sm text-center mb-4">Frontend Dev</p>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow text-center">
-                                Spesialis frontend development dengan fokus pada user interface yang responsif dan performa tinggi.
-                            </p>
-                            <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">React</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Vue.js</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">TypeScript</span>
-                            </div>
-                            <a href="https://wa.me/6281234567895?text=Halo%2C%20saya%20ingin%20melihat%20portofolio%20lengkap%20Albar%20Raya%20Hama%20dari%20Wenpyid" 
-                               target="_blank"
-                               class="text-center text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
-                                Lihat Portofolio Lengkap →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 7 -->
-                    <div class="glow-border card-hover group cursor-pointer flex-shrink-0 w-full md:w-1/3" onclick="window.open('https://portfolio-hanan-chi.vercel.app/', '_blank')">
-                        <div class="p-4 md:p-6 h-full flex flex-col bg-gray-900/50">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 p-1 mb-4 mx-auto">
-                                <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
-                                    <img src="hanan.jpg" alt="Hanan Nurdin Chaliq" class="w-full h-full object-cover rounded-full">
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold text-center mb-1">Hanan Nurdin Chaliq</h3>
-                            <p class="text-blue-400 text-sm text-center mb-4">Full Stack Dev</p>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow text-center">
-                                Developer Full Stack sekaligus Alumni MAKN ENDE dengan keahlian dalam API design, database management, dan server-side logic.
-                            </p>
-                            <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">php</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">laravel</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">AI Hybrid</span>
-                            </div>
-                            <a href="https://portfolio-hanan-chi.vercel.app/" 
-                               target="_blank"
-                               class="text-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
-                                Lihat Portofolio Lengkap →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 8 -->
-                    <div class="glow-border card-hover group cursor-pointer flex-shrink-0 w-full md:w-1/3" onclick="window.open('https://oruzganmarangka.vercel.app/', '_blank')">
-                        <div class="p-4 md:p-6 h-full flex flex-col bg-gray-900/50">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 mb-4 mx-auto">
-                                <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
-                                    <img src="WIN_20260515_20_35_38_Pro.jpg" alt="Oruzgan Marangka" class="w-full h-full object-cover rounded-full">
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold text-center mb-1">Oruzgan Marangka</h3>
-                            <p class="text-purple-400 text-sm text-center mb-4">UI/UX Dev</p>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow text-center">
-                                Spesialis UI/UX design dengan fokus pada user experience yang intuitif dan desain yang estetis.
-                            </p>
-                            <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Figma</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Adobe XD</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Sketch</span>
-                            </div>
-                            <a href="https://wa.me/6281234567897?text=Halo%2C%20saya%20ingin%20melihat%20portofolio%20lengkap%20Oruzgan%20Marangka%20dari%20Wenpyid" 
-                               target="_blank"
-                               class="text-center text-purple-400 hover:text-purple-300 text-sm font-medium transition-colors">
-                                Lihat Portofolio Lengkap →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Team Member 9 -->
-                    <div class="glow-border card-hover group cursor-pointer flex-shrink-0 w-full md:w-1/3" onclick="window.open('https://wa.me/6285178549054?text=Halo%20Saya%20ingin%20menghubungi%20Ibadu%20Rahman%20Hasan%20dari%20Wenpyid', '_blank')">
-                        <div class="p-4 md:p-6 h-full flex flex-col bg-gray-900/50">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 p-1 mb-4 mx-auto">
-                                <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
-                                    <img src="https://via.placeholder.com/80x80/10b981/ffffff?text=IRH" alt="Ibadu Rahman Hasan" class="w-full h-full object-cover rounded-full">
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-bold text-center mb-1">Ibadu Rahman Hasan</h3>
-                            <p class="text-emerald-400 text-sm text-center mb-4">Full Stack Developer</p>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow text-center">
-                                Anggota baru tim dengan semangat pengembangan produk dan kekuatan pada full stack web development.
-                            </p>
-                            <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">JavaScript</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Node.js</span>
-                                <span class="tech-pill px-3 py-1 rounded-full text-xs">Tailwind</span>
-                            </div>
-                            <a href="https://wa.me/6285178549054?text=Halo%20Saya%20ingin%20menghubungi%20Ibadu%20Rahman%20Hasan%20dari%20Wenpyid" 
-                               target="_blank"
-                               class="text-center text-emerald-400 hover:text-emerald-300 text-sm font-medium transition-colors">
-                                Hubungi Ibadu Rahman Hasan →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Navigation Buttons -->
-                <div class="flex justify-center gap-4 mt-8">
-                    <button onclick="prevSlide()" class="px-3 py-2 md:px-4 md:py-2 text-sm md:text-base bg-wenpyid/20 hover:bg-wenpyid/30 text-wenpyid border border-wenpyid/50 rounded-full transition-all hover:shadow-[0_0_20px_rgba(110,231,183,0.3)]">
-                        ← Kiri
-                    </button>
-                    <button onclick="nextSlide()" class="px-3 py-2 md:px-4 md:py-2 text-sm md:text-base bg-wenpyid/20 hover:bg-wenpyid/30 text-wenpyid border border-wenpyid/50 rounded-full transition-all hover:shadow-[0_0_20px_rgba(110,231,183,0.3)]">
-                        Kanan →
-                    </button>
-                </div>
-            </div>
-            
-            <div class="mt-12 text-center">
-                <a href="https://wa.me/6285178549054?text=Halo%20Wenpyid%20Team%2C%0A%0ASaya%20ingin%20konsultasi%20pembuatan%20website%20dan%20berminat%20untuk%20melihat%20portofolio%20para%20programmer%20yang%20bekerja%20di%20Wenpyid.%0A%0AMohon%20informasi%20mengenai%3A%0A1.%20Portofolio%20individu%20masing-masing%20developer%0A2.%20Spesialisasi%20dan%20tech%20stack%20tim%0A3.%20Availability%20untuk%20proyek%20baru%0A%0ATerima%20kasih!"  
-                   target="_blank"
-                   class="inline-flex items-center gap-2 px-8 py-4 border border-wenpyid text-wenpyid hover:bg-wenpyid hover:text-black rounded-full transition-all duration-300">
-                    <span>Request Portofolio Seluruh Tim</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </a>
-            </div>
-            
+          </div>
+          <div class="member-name">M Albar Raya Hama</div>
+          <div class="member-role" style="color:#fb923c">Frontend Dev</div>
+          <p class="member-bio">Spesialis UI responsif dan performa tinggi untuk interface yang memukau.</p>
+          <div class="member-skills">
+            <span class="skill-chip">React</span><span class="skill-chip">Vue.js</span><span class="skill-chip">TypeScript</span>
+          </div>
+          <a href="https://raya-hama.vercel.app/" target="_blank" class="member-link" style="color:#fb923c">Lihat Portofolio →</a>
         </div>
-    </section>
 
-    <!-- Featured Projects Section -->
-    <section class="py-20 px-6 scroll-reveal" id="projects">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-wenpyid font-medium tracking-wider uppercase text-sm">Portofolio Kolektif</span>
-                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Proyek Unggulan Tim</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Hasil kolaborasi para developer Wenpyid yang menggabungkan keahlian individu menjadi solusi komprehensif.</p>
+        <div class="member-card" onclick="window.open('https://portfolio-hanan-chi.vercel.app/','_blank')">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-inner">
+              <img src="hanan.jpg" alt="Hanan Nurdin Chaliq" onerror="this.parentElement.innerHTML='<div class=fallback-icon>🔧</div>'">
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Project Card 1 -->
-                <a href="javascript:void(0)" onclick="window.open('', '_blank')" class="glow-border card-hover group cursor-pointer block transition-all">
-                    <div class="p-6 h-full flex flex-col">
-                        <div class="aspect-video rounded-xl bg-gradient-to-br from-wenpyid/20 to-wenpyid-deep/20 mb-6 flex items-center justify-center overflow-hidden relative">
-                            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%236ee7b7" fill-opacity="0.1" fill-rule="evenodd"%3E%3Cpath d="M0 40L40 0H20L0 20M40 40V20L20 40"/%3E%3C/g%3E%3C/svg%3E')]"></div>
-                            <svg class="w-16 h-16 text-wenpyid/50 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                            </svg>
-                        </div>
-                        
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-wenpyid transition-colors">SaaS Admin Dashboard</h3>
-                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Manajemen data bisnis kompleks menjadi insight real-time. Dikerjakan oleh tim backend Muh Raihan Humris dan frontend Kholid Usman A.S dengan integrasi grafik interaktif.
-                        </p>
-                        
-                        <div class="flex flex-wrap gap-2 mt-auto mb-4">
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-wenpyid">React.js</span>
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-wenpyid">TypeScript</span>
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-wenpyid">Recharts</span>
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-wenpyid">Node.js</span>
-                        </div>
-                        
-                        <div class="flex items-center gap-2 text-wenpyid group-hover:text-wenpyid-light transition-colors text-sm font-medium">
-                            <span>Lihat Proyek</span>
-                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Project Card 2 -->
-                <a href="javascript:void(0)" onclick="window.open('https://wa.me/6285178549054?text=Halo%20Wenpyid%2C%20saya%20tertarik%20melihat%20demo%20E-Commerce%20Platform%20yang%20kalian%20kerjakan', '_blank')" class="glow-border card-hover group cursor-pointer block transition-all">
-                    <div class="p-6 h-full flex flex-col">
-                        <div class="aspect-video rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 mb-6 flex items-center justify-center overflow-hidden relative">
-                            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%233b82f6" fill-opacity="0.1" fill-rule="evenodd"%3E%3Cpath d="M0 40L40 0H20L0 20M40 40V20L20 40"/%3E%3C/g%3E%3C/svg%3E')]"></div>
-                            <svg class="w-16 h-16 text-blue-400/50 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                            </svg>
-                        </div>
-                        
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors">E-Commerce Platform</h3>
-                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Platform e-commerce dengan alur checkout mulus. Tim Alif Firmansari P mendesain UX research-based, Muh Raihan Humris mengimplementasikan payment gateway security.
-                        </p>
-                        
-                        <div class="flex flex-wrap gap-2 mt-auto mb-4">
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-blue-300">Next.js</span>
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-blue-300">Stripe</span>
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-blue-300">Prisma</span>
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-blue-300">PostgreSQL</span>
-                        </div>
-                        
-                        <div class="flex items-center gap-2 text-blue-400 group-hover:text-blue-300 transition-colors text-sm font-medium">
-                            <span>Minta Demo</span>
-                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Project Card 3 -->
-                <a href="javascript:void(0)" onclick="window.open('https://wa.me/6285178549054?text=Halo%20Wenpyid%2C%20saya%20tertarik%20melihat%20demo%20Corporate%20Landing%20Page%20yang%20kalian%20kerjakan', '_blank')" class="glow-border card-hover group cursor-pointer block transition-all">
-                    <div class="p-6 h-full flex flex-col">
-                        <div class="aspect-video rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 mb-6 flex items-center justify-center overflow-hidden relative">
-                            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23a855f7" fill-opacity="0.1" fill-rule="evenodd"%3E%3Cpath d="M0 40L40 0H20L0 20M40 40V20L20 40"/%3E%3C/g%3E%3C/svg%3E')]"></div>
-                            <svg class="w-16 h-16 text-purple-400/50 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                            </svg>
-                        </div>
-                        
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-purple-400 transition-colors">Corporate Landing Page</h3>
-                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Landing page korporat dengan storytelling visual. Kholid Usman A.S menangani animasi GSAP kompleks, Alif Firmansari P memastikan brand consistency seluruh halaman.
-                        </p>
-                        
-                        <div class="flex flex-wrap gap-2 mt-auto mb-4">
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-purple-300">HTML5</span>
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-purple-300">GSAP</span>
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-purple-300">Tailwind</span>
-                            <span class="tech-pill px-3 py-1 rounded-full text-xs text-purple-300">Vite</span>
-                        </div>
-                        
-                        <div class="flex items-center gap-2 text-purple-400 group-hover:text-purple-300 transition-colors text-sm font-medium">
-                            <span>Minta Demo</span>
-                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
-            </div>
+          </div>
+          <div class="member-name">Hanan Nurdin Chaliq</div>
+          <div class="member-role" style="color:#60a5fa">Full Stack Dev</div>
+          <p class="member-bio">Full Stack developer Alumni MAKN ENDE, expert API design dan database management.</p>
+          <div class="member-skills">
+            <span class="skill-chip">PHP</span><span class="skill-chip">Laravel</span><span class="skill-chip">AI Hybrid</span>
+          </div>
+          <a href="https://portfolio-hanan-chi.vercel.app/" target="_blank" class="member-link" style="color:#60a5fa">Lihat Portofolio →</a>
         </div>
-    </section>
 
-    <!-- Workflow Section -->
-    <section class="py-20 px-6 scroll-reveal bg-white/5" id="workflow">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-wenpyid font-medium tracking-wider uppercase text-sm">Proses Kerja Tim</span>
-                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Cara Wenpyid Bekerja</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Metodologi terstruktur yang memastikan kolaborasi tim efisien dan transparan untuk setiap proyek.</p>
+        <div class="member-card" onclick="window.open('https://oruzganmarangka.vercel.app/','_blank')">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-inner">
+              <img src="WIN_20260515_20_35_38_Pro.jpg" alt="Oruzgan Marangka" onerror="this.parentElement.innerHTML='<div class=fallback-icon>✏️</div>'">
             </div>
-            
-            <div class="grid md:grid-cols-4 gap-6">
-                <!-- Step 1 -->
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-wenpyid to-wenpyid-dark rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                    <div class="relative p-8 rounded-2xl bg-gray-900/80 border border-white/10 h-full">
-                        <div class="w-12 h-12 rounded-full bg-wenpyid/20 flex items-center justify-center mb-6 text-wenpyid font-bold text-xl">1</div>
-                        <h3 class="text-xl font-bold mb-3">Discovery</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Tim riset Wenpyid melakukan konsultasi mendalam untuk memahami DNA bisnis Anda. Requirement gathering melibatkan analisis kompetitor dan user persona.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-wenpyid-dark to-blue-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                    <div class="relative p-8 rounded-2xl bg-gray-900/80 border border-white/10 h-full">
-                        <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mb-6 text-blue-400 font-bold text-xl">2</div>
-                        <h3 class="text-xl font-bold mb-3">Design</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            UI/UX designer membuat wireframe dan high-fidelity mockup. Setiap desain melalui review tim untuk memastikan feasibility teknis dan estetika optimal.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                    <div class="relative p-8 rounded-2xl bg-gray-900/80 border border-white/10 h-full">
-                        <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mb-6 text-purple-400 font-bold text-xl">3</div>
-                        <h3 class="text-xl font-bold mb-3">Development</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Frontend dan backend developer bekerja paralel dengan daily standup. Code review ketat, testing otomatis, dan optimasi Core Web Vitals diterapkan.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                    <div class="relative p-8 rounded-2xl bg-gray-900/80 border border-white/10 h-full">
-                        <div class="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center mb-6 text-pink-400 font-bold text-xl">4</div>
-                        <h3 class="text-xl font-bold mb-3">Launch</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            QA tim melakukan uji coba multi-browser dan stress testing. Deployment dengan CI/CD pipeline, monitoring aktif, dan dokumentasi handover lengkap.
-                        </p>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="member-name">Oruzgan Marangka</div>
+          <div class="member-role" style="color:#c084fc">UI/UX Dev</div>
+          <p class="member-bio">Spesialis UI/UX dengan fokus pada user experience intuitif dan desain estetis.</p>
+          <div class="member-skills">
+            <span class="skill-chip">Figma</span><span class="skill-chip">Adobe XD</span><span class="skill-chip">Sketch</span>
+          </div>
+          <a href="https://oruzganmarangka.vercel.app/" target="_blank" class="member-link" style="color:#c084fc">Lihat Portofolio →</a>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 px-6 scroll-reveal">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="glow-border p-12 rounded-3xl bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%236ee7b7" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
-                
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 relative z-10">Siap Bertemu <span class="wenpyid-text">Tim Kami</span>?</h2>
-                <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto relative z-10">
-                    Konsultasikan kebutuhan website Anda dengan tim developer Wenpyid. Kami akan memperkenalkan programmer yang paling sesuai dengan spesifikasi proyek Anda.
-                </p>
-                
-                <!-- WhatsApp CTA dengan request portofolio tim -->
-                <a href="https://wa.me/6285178549054?text=Halo%20Wenpyid%20Team%2C%0A%0ASaya%20ingin%20konsultasi%20pembuatan%20website%20dan%20berminat%20untuk%20melihat%20portofolio%20para%20programmer%20yang%20bekerja%20di%20Wenpyid.%0A%0AMohon%20informasi%20mengenai%3A%0A1.%20Portofolio%20individu%20masing-masing%20developer%0A2.%20Spesialisasi%20dan%20tech%20stack%20tim%0A3.%20Availability%20untuk%20proyek%20baru%0A%0ATerima%20kasih!" 
-                   target="_blank"
-                   class="relative z-10 inline-flex items-center gap-3 px-10 py-5 wenpyid-gradient text-black font-bold rounded-full transition-all duration-300 hover:shadow-[0_0_50px_rgba(110,231,183,0.5)] hover:scale-105">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
-                    <span>Hubungi Tim & Request Portofolio</span>
-                </a>
-                
-                <p class="mt-6 text-gray-500 text-sm relative z-10">Tim kami akan membalas dalam 2 jam pada jam kerja</p>
+        <div class="member-card" onclick="window.open('https://wa.me/6285178549054','_blank')">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-inner">
+              <img src="ibad.png" alt="Ibadu Rahman Hasan" onerror="this.parentElement.innerHTML='<div class=fallback-icon>🚀</div>'">
             </div>
+          </div>
+          <div class="member-name">Ibadu Rahman Hasan</div>
+          <div class="member-role" style="color:#34d399">Full Stack Developer</div>
+          <p class="member-bio">Anggota baru dengan semangat tinggi dalam full stack web development.</p>
+          <div class="member-skills">
+            <span class="skill-chip">JavaScript</span><span class="skill-chip">Node.js</span><span class="skill-chip">Tailwind</span>
+          </div>
+          <a href="https://wa.me/6285178549054" target="_blank" class="member-link" style="color:#34d399">Hubungi →</a>
         </div>
-    </section>
 
-    <!-- AI Assistant Section -->
-    <section class="py-20 px-6 scroll-reveal bg-gradient-to-br from-black via-slate-950 to-slate-900" id="ai-assistant">
-        <div class="max-w-6xl mx-auto text-center">
-            <span class="text-wenpyid font-medium tracking-wider uppercase text-sm">AI Assistant</span>
-            <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Ajak Wenpy Ngobrol Sekarang</h2>
-            <p class="text-gray-400 max-w-3xl mx-auto mb-10">Wenpy siap menjadi asisten anime 3D yang ceria dan membantu. Tekan tombol untuk memulai chat dan minta saran web, desain, atau sekadar ngobrol.</p>
-            <button onclick="openAIChat()" class="px-10 py-4 wenpyid-gradient text-black font-bold rounded-full transition-all hover:scale-105 shadow-[0_0_40px_rgba(110,231,183,0.4)]">
-                Buka AI Assistant Wenpy
-            </button>
+      </div>
+    </div>
+
+    <div class="team-nav reveal">
+      <button class="team-nav-btn" id="team-prev">←</button>
+      <div class="team-dots" id="team-dots"></div>
+      <button class="team-nav-btn" id="team-next">→</button>
+    </div>
+
+    <div style="text-align:center;margin-top:40px" class="reveal">
+      <a href="https://wa.me/6285178549054?text=Halo%20Wenpyid%2C%20saya%20ingin%20melihat%20portofolio%20seluruh%20tim" target="_blank" class="btn-outline">
+        Request Portofolio Seluruh Tim →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="projects-header reveal">
+      <div>
+        <div class="section-eyebrow">Portofolio Kolektif</div>
+        <h2 class="section-title">Proyek <span class="mint-text">Unggulan Tim</span></h2>
+      </div>
+      <a href="https://wa.me/6285178549054" target="_blank" class="btn-outline" style="white-space:nowrap">Lihat Semua →</a>
+    </div>
+    <div class="projects-grid">
+      <a href="javascript:void(0)" class="proj-card reveal">
+        <div class="proj-thumb">
+          <div class="proj-thumb-bg" style="background:linear-gradient(135deg,rgba(110,231,183,.15),rgba(5,150,105,.08));"></div>
+          <div class="proj-thumb-icon">📊</div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-white/10 bg-black">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div class="md:col-span-2">
-                    <!-- Logo di Footer -->
-                    <a href="https://raihaan-personal.vercel.app/" target="_blank" class="flex items-center gap-3 mb-4 group">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-wenpyid-light to-wenpyid-deep p-0.5 group-hover:shadow-[0_0_15px_rgba(110,231,183,0.4)] transition-shadow">
-                            <div class="w-full h-full rounded-full bg-gray-900 flex items-center justify-center overflow-hidden">
-                                <img src="ppbg.png" alt="Wenpyid Logo" class="w-8 h-8 object-contain group-hover:scale-105 transition-transform">
-                            </div>
-                        </div>
-                        <span class="text-2xl font-bold wenpyid-text group-hover:opacity-80 transition-opacity">Wenpyid</span>
-                    </a>
-                    <p class="text-gray-400 text-sm max-w-md">
-                        Tim developer profesional Indonesia yang menghadirkan website modern, cepat, dan siap produksi dengan keahlian UI/UX design premium.
-                    </p>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-4 text-white">Tim Kami</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#team" class="hover:text-wenpyid transition-colors">Muh Raihan Humris</a></li>
-                        <li><a href="#team" class="hover:text-wenpyid transition-colors">Kholid Usman A.S</a></li>
-                        <li><a href="#team" class="hover:text-wenpyid transition-colors">Alif Firmansari P</a></li>
-                        <li><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20melihat%20portofolio%20lengkap%20tim%20Wenpyid" target="_blank" class="hover:text-wenpyid transition-colors">Lihat Semua Portofolio →</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-4 text-white">Kontak</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-wenpyid" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                            <a href="https://wa.me/6285178549054?text=Halo%20Wenpyid%20Team%2C%20saya%20tertarik%20melihat%20portofolio%20programmer%20yang%20bekerja%20di%20Wenpyid" target="_blank" class="hover:text-wenpyid">WhatsApp Team</a>
-                        </li>
-                        <li>wennipyid@gmail.com</li>
-                        <li>Indonesia</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-500 text-sm">© 2024 Wenpyid Team. All rights reserved.</p>
-                <div class="flex gap-6">
-                    <a href="#" class="text-gray-400 hover:text-wenpyid transition-colors">GitHub</a>
-                    <a href="#" class="text-gray-400 hover:text-wenpyid transition-colors">LinkedIn</a>
-                    <a href="#" class="text-gray-400 hover:text-wenpyid transition-colors">Instagram</a>
-                </div>
-            </div>
+        <div class="proj-body">
+          <span class="proj-tag">SAAS DASHBOARD</span>
+          <h3 class="proj-title">SaaS Admin Dashboard</h3>
+          <p class="proj-desc">Manajemen data bisnis kompleks menjadi insight real-time dengan grafik interaktif dan analitik mendalam.</p>
+          <div class="proj-tech">
+            <span>React.js</span><span>TypeScript</span><span>Recharts</span><span>Node.js</span>
+          </div>
+          <div class="proj-arrow" style="color:var(--mint)">Lihat Detail <span>→</span></div>
         </div>
-    </footer>
-
-    <!-- AI Chat Section -->
-    <section id="ai-chat" class="fixed bottom-20 right-6 z-40 hidden">
-        <div class="bg-gray-900 border border-wenpyid/30 rounded-2xl shadow-2xl p-4 w-80 max-w-[calc(100vw-2rem)]">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-bold wenpyid-text">Tanya AI Wenpy</h3>
-                <button id="close-ai-chat" class="text-gray-400 hover:text-white">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <div id="chat-output" class="border border-wenpyid/30 rounded-lg p-3 mb-3 min-h-[100px] max-h-48 overflow-y-auto bg-gray-800/50 text-sm text-gray-300">
-                Halo! Saya AI Wenpy, asisten virtual Wenpyid. Ada yang bisa saya bantu? 😊
-            </div>
-            <div id="chat-suggestions" class="mb-3 flex flex-wrap gap-2"></div>
-            <div id="chat-tags" class="mb-3 flex flex-wrap gap-2"></div>
-            <div class="flex gap-2">
-                <input type="text" id="user-input" placeholder="Ketik pertanyaan atau pilih contoh cepat..." class="flex-1 px-3 py-2 bg-gray-800 border border-wenpyid/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-wenpyid text-sm">
-                <button id="send-btn" class="px-4 py-2 bg-wenpyid hover:bg-wenpyid-dark text-black font-medium rounded-lg transition-colors text-sm">
-                    Kirim
-                </button>
-            </div>
+      </a>
+      <a href="javascript:void(0)" onclick="window.open('https://wa.me/6285178549054','_blank');return false;" class="proj-card reveal reveal-delay-1">
+        <div class="proj-thumb">
+          <div class="proj-thumb-bg" style="background:linear-gradient(135deg,rgba(96,165,250,.12),rgba(59,130,246,.06));"></div>
+          <div class="proj-thumb-icon">🛍️</div>
         </div>
-    </section>
-
-    <!-- Floating AI Button -->
-    <button id="ai-toggle-btn" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-wenpyid hover:bg-wenpyid-dark rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center group">
-        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-4l-4 4-4-4z"></path>
-        </svg>
-        <div class="absolute -top-12 right-0 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-            Tanya AI Wenpy
+        <div class="proj-body">
+          <span class="proj-tag" style="color:#60a5fa">E-COMMERCE</span>
+          <h3 class="proj-title">E-Commerce Platform</h3>
+          <p class="proj-desc">Platform e-commerce dengan alur checkout mulus, payment gateway aman, dan UX yang research-based.</p>
+          <div class="proj-tech">
+            <span>Next.js</span><span>Stripe</span><span>Prisma</span><span>PostgreSQL</span>
+          </div>
+          <div class="proj-arrow" style="color:#60a5fa">Minta Demo <span>→</span></div>
         </div>
-    </button>
+      </a>
+      <a href="javascript:void(0)" onclick="window.open('https://wa.me/6285178549054','_blank');return false;" class="proj-card reveal reveal-delay-2">
+        <div class="proj-thumb">
+          <div class="proj-thumb-bg" style="background:linear-gradient(135deg,rgba(192,132,252,.12),rgba(124,58,237,.06));"></div>
+          <div class="proj-thumb-icon">🏢</div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-tag" style="color:#c084fc">LANDING PAGE</span>
+          <h3 class="proj-title">Corporate Landing Page</h3>
+          <p class="proj-desc">Landing page korporat dengan storytelling visual, animasi kompleks, dan brand consistency yang kuat.</p>
+          <div class="proj-tech">
+            <span>HTML5</span><span>GSAP</span><span>Tailwind</span><span>Vite</span>
+          </div>
+          <div class="proj-arrow" style="color:#c084fc">Minta Demo <span>→</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <!-- Scroll Animation Script -->
-    <script>
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+<!-- WORKFLOW -->
+<section id="workflow">
+  <div class="container">
+    <div class="workflow-header reveal">
+      <div class="section-eyebrow">Proses Kerja Tim</div>
+      <h2 class="section-title">Cara <span class="mint-text">Wenpyid</span> Bekerja</h2>
+      <p class="section-desc">Metodologi terstruktur yang memastikan kolaborasi efisien dan transparan untuk setiap proyek.</p>
+    </div>
+    <div class="workflow-steps">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Discovery</h3>
+        <p class="step-desc">Konsultasi mendalam untuk memahami DNA bisnis Anda. Requirement gathering melibatkan analisis kompetitor dan user persona.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Design</h3>
+        <p class="step-desc">UI/UX designer membuat wireframe dan high-fidelity mockup. Setiap desain melalui review tim untuk memastikan feasibility teknis.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Development</h3>
+        <p class="step-desc">Frontend dan backend bekerja paralel dengan daily standup. Code review ketat, testing otomatis, dan optimasi Core Web Vitals.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Launch</h3>
+        <p class="step-desc">QA tim melakukan uji coba multi-browser dan stress testing. Deployment dengan CI/CD pipeline dan monitoring aktif.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-glow cta-glow-1"></div>
+      <div class="cta-glow cta-glow-2"></div>
+      <h2 class="cta-title">Siap Bertemu <span class="mint-text">Tim Kami?</span></h2>
+      <p class="cta-desc">Konsultasikan kebutuhan website Anda dengan tim developer Wenpyid. Kami akan memperkenalkan programmer yang paling sesuai dengan proyek Anda.</p>
+      <a href="https://wa.me/6285178549054?text=Halo%20Wenpyid%20Team%2C%20saya%20ingin%20konsultasi%20dan%20melihat%20portofolio%20tim" target="_blank" class="btn-primary" style="display:inline-flex">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Hubungi Tim & Request Portofolio
+      </a>
+      <p class="cta-note">Tim kami akan membalas dalam 2 jam pada jam kerja</p>
+    </div>
+  </div>
+</section>
 
-        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="text-decoration:none">
+        <div class="logo-orb" style="width:38px;height:38px">
+          <div class="logo-inner">
+            <img src="ppbg.png" alt="Wenpy" onerror="this.style.display='none';this.parentElement.innerHTML='🌿'">
+          </div>
+        </div>
+        <span class="logo-name" style="font-size:1.2rem">Wenpy.Id</span>
+      </a>
+      <p>Tim developer profesional Indonesia yang menghadirkan website modern, cepat, dan siap produksi.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tim Kami</h4>
+      <ul>
+        <li><a href="https://raihaan-personal.vercel.app/" target="_blank">Muh Raihan Humris</a></li>
+        <li><a href="#team">Alif Firmansari P</a></li>
+        <li><a href="https://farisulfahmi.github.io/portofolio-fahmi/#about" target="_blank">Farisul Fahmi</a></li>
+        <li><a href="https://wa.me/6285178549054" target="_blank">Lihat Semua →</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Layanan</h4>
+      <ul>
+        <li><a href="#">Website Corporate</a></li>
+        <li><a href="#">E-Commerce</a></li>
+        <li><a href="#">Web Application</a></li>
+        <li><a href="#">UI/UX Design</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <ul>
+        <li><a href="https://wa.me/6285178549054" target="_blank">WhatsApp Team</a></li>
+        <li><a href="mailto:wennipyid@gmail.com">wennipyid@gmail.com</a></li>
+        <li><a href="#">Indonesia</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Wenpyid Team. All rights reserved.</p>
+    <div class="social-row">
+      <a href="#" class="social-btn">GH</a>
+      <a href="#" class="social-btn">LI</a>
+      <a href="#" class="social-btn">IG</a>
+    </div>
+  </div>
+</footer>
 
-        let isLightTheme = false;
-        const root = document.documentElement;
-        const settingsMenu = document.getElementById('settingsMenu');
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
+<!-- AI CHAT -->
+<div id="ai-chat">
+  <div class="chat-header">
+    <div class="chat-head-info">
+      <div class="chat-avatar">🤖</div>
+      <div>
+        <div class="chat-name">AI Wenpy</div>
+        <div class="chat-status">● Online</div>
+      </div>
+    </div>
+    <button class="chat-close" id="chat-close">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-msgs">
+    <div class="chat-msg ai">Halo! Saya AI Wenpy, asisten virtual Wenpyid. Ada yang bisa saya bantu? 😊</div>
+  </div>
+  <div class="chat-suggestions" id="chat-sugs"></div>
+  <div class="chat-input-row">
+    <input type="text" class="chat-input" id="chat-in" placeholder="Tulis pesan...">
+    <button class="chat-send" id="chat-send">↑</button>
+  </div>
+</div>
 
-        function toggleSettings() {
-            settingsMenu.classList.toggle('hidden');
-        }
+<button id="ai-fab" title="Tanya AI Wenpy">
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-4l-4 4-4-4z"/>
+  </svg>
+</button>
 
-        function toggleTheme() {
-            isLightTheme = !isLightTheme;
-            document.body.classList.toggle('light-theme', isLightTheme);
-            themeToggleBtn.textContent = isLightTheme ? 'Mode Gelap' : 'Mode Terang';
-        }
+<script>
+/* ═══════════════════════════════
+   CURSOR
+═══════════════════════════════ */
+const cur = document.getElementById('cur');
+const curRing = document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function animCur(){
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+  curRing.style.left=rx+'px';curRing.style.top=ry+'px';
+  requestAnimationFrame(animCur);
+})();
+document.querySelectorAll('a,button,.member-card,.proj-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+});
 
-        function changeAccent(color, darkColor, deepColor, btn) {
-            root.style.setProperty('--accent', color);
-            root.style.setProperty('--accent-dark', darkColor);
-            root.style.setProperty('--accent-deep', deepColor);
-            document.querySelectorAll('.settings-menu .color-btn').forEach(el => el.classList.remove('active'));
-            btn.classList.add('active');
-        }
+/* ═══════════════════════════════
+   THREE.JS BACKGROUND
+═══════════════════════════════ */
+(function(){
+  const canvas=document.getElementById('canvas3d');
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,.1,1000);
+  camera.position.z=30;
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setClearColor(0x000000,0);
 
-        function openClientPage() {
-            window.location.href = 'client.html';
-        }
+  /* Particle field */
+  const pCount=900;
+  const pGeo=new THREE.BufferGeometry();
+  const pPos=new Float32Array(pCount*3);
+  const pSpeeds=[];
+  for(let i=0;i<pCount;i++){
+    pPos[i*3]=(Math.random()-.5)*80;
+    pPos[i*3+1]=(Math.random()-.5)*60;
+    pPos[i*3+2]=(Math.random()-.5)*40;
+    pSpeeds.push({x:(Math.random()-.5)*.008,y:(Math.random()-.5)*.006,z:(Math.random()-.5)*.004});
+  }
+  pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+  const pMat=new THREE.PointsMaterial({color:0x6ee7b7,size:.12,transparent:true,opacity:.5});
+  const particles=new THREE.Points(pGeo,pMat);
+  scene.add(particles);
 
-        function openAIChat() {
-            aiChat.classList.remove('hidden');
-            userInput.focus();
-        }
+  /* Floating torus rings */
+  const rings=[];
+  const ringData=[
+    {r:8,tube:.04,color:0x6ee7b7,opacity:.15,rx:.002,ry:.003},
+    {r:14,tube:.03,color:0x34d399,opacity:.1,rx:.001,ry:-.002},
+    {r:20,tube:.025,color:0x059669,opacity:.08,rx:-.0015,ry:.001},
+  ];
+  ringData.forEach(d=>{
+    const geo=new THREE.TorusGeometry(d.r,d.tube,8,80);
+    const mat=new THREE.MeshBasicMaterial({color:d.color,transparent:true,opacity:d.opacity,wireframe:false});
+    const mesh=new THREE.Mesh(geo,mat);
+    mesh.rotation.x=Math.random()*Math.PI;
+    mesh.rotation.y=Math.random()*Math.PI;
+    mesh.userData={rx:d.rx,ry:d.ry};
+    scene.add(mesh);
+    rings.push(mesh);
+  });
 
-        document.addEventListener('click', (event) => {
-            if (!settingsMenu.contains(event.target) && !event.target.closest('#settingsPanel')) {
-                if (!settingsMenu.classList.contains('hidden')) {
-                    settingsMenu.classList.add('hidden');
-                }
-            }
-        });
+  /* Mouse parallax */
+  let targX=0,targY=0,currX=0,currY=0;
+  document.addEventListener('mousemove',e=>{
+    targX=(e.clientX/window.innerWidth-.5)*.6;
+    targY=(e.clientY/window.innerHeight-.5)*.4;
+  });
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+  window.addEventListener('resize',()=>{
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  });
 
-        // Team Carousel
-        let currentSlide = 0;
-        const carousel = document.getElementById('team-carousel');
-        const totalSlides = 8; // Total team members
-        let autoScrollInterval;
+  let frame=0;
+  (function animate(){
+    requestAnimationFrame(animate);
+    frame++;
+    currX+=(targX-currX)*.03;
+    currY+=(targY-currY)*.03;
+    camera.position.x=currX*3;
+    camera.position.y=-currY*3;
 
-        function updateCarousel() {
-            const slideWidth = carousel.children[0].offsetWidth + 32; // 32px gap
-            carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-        }
+    /* Animate particles */
+    const pos=pGeo.attributes.position.array;
+    for(let i=0;i<pCount;i++){
+      pos[i*3]+=pSpeeds[i].x;
+      pos[i*3+1]+=pSpeeds[i].y;
+      pos[i*3+2]+=pSpeeds[i].z;
+      if(Math.abs(pos[i*3])>40)pSpeeds[i].x*=-1;
+      if(Math.abs(pos[i*3+1])>30)pSpeeds[i].y*=-1;
+      if(Math.abs(pos[i*3+2])>20)pSpeeds[i].z*=-1;
+    }
+    pGeo.attributes.position.needsUpdate=true;
+    particles.rotation.y=frame*.0003;
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        }
+    /* Spin rings */
+    rings.forEach(r=>{
+      r.rotation.x+=r.userData.rx;
+      r.rotation.y+=r.userData.ry;
+    });
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        }
+    renderer.render(scene,camera);
+  })();
+})();
 
-        function startAutoScroll() {
-            autoScrollInterval = setInterval(nextSlide, 3000); // Auto scroll every 3 seconds
-        }
+/* ═══════════════════════════════
+   HERO 3D SPHERE (Three.js)
+═══════════════════════════════ */
+(function(){
+  const canvas=document.getElementById('hero-canvas');
+  if(!canvas)return;
+  const wrap=canvas.parentElement;
+  const w=wrap.offsetWidth||420,h=wrap.offsetHeight||420;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(45,w/h,.1,100);
+  camera.position.z=3.5;
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(w,h);
+  renderer.setClearColor(0x000000,0);
 
-        function stopAutoScroll() {
-            clearInterval(autoScrollInterval);
-        }
+  /* Sphere wireframe */
+  const sGeo=new THREE.IcosahedronGeometry(1.2,4);
+  const sMat=new THREE.MeshBasicMaterial({color:0x6ee7b7,wireframe:true,transparent:true,opacity:.25});
+  const sphere=new THREE.Mesh(sGeo,sMat);
+  scene.add(sphere);
 
-        // Initialize carousel on load
-        window.addEventListener('load', () => {
-            updateCarousel();
-            startAutoScroll();
-        });
+  /* Inner glowing sphere */
+  const iGeo=new THREE.SphereGeometry(1,32,32);
+  const iMat=new THREE.MeshBasicMaterial({color:0x059669,transparent:true,opacity:.06});
+  scene.add(new THREE.Mesh(iGeo,iMat));
 
-        window.addEventListener('resize', updateCarousel);
+  /* Orbiting dots */
+  const orbitDots=[];
+  for(let i=0;i<20;i++){
+    const g=new THREE.SphereGeometry(.025,4,4);
+    const m=new THREE.MeshBasicMaterial({color:0x6ee7b7,transparent:true,opacity:.8});
+    const mesh=new THREE.Mesh(g,m);
+    const theta=Math.random()*Math.PI*2;
+    const phi=Math.acos(2*Math.random()-1);
+    const r=1.25;
+    mesh.userData={theta,phi,r,speed:(Math.random()-.5)*.015};
+    scene.add(mesh);
+    orbitDots.push(mesh);
+  }
 
-        // Pause auto-scroll on hover
-        carousel.addEventListener('mouseenter', stopAutoScroll);
-        carousel.addEventListener('mouseleave', startAutoScroll);
+  let mx2=0,my2=0;
+  document.addEventListener('mousemove',e=>{
+    mx2=(e.clientX/window.innerWidth-.5)*2;
+    my2=(e.clientY/window.innerHeight-.5)*2;
+  });
 
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+  let t=0;
+  (function anim(){
+    requestAnimationFrame(anim);
+    t+=.008;
+    sphere.rotation.y=t*.4+mx2*.3;
+    sphere.rotation.x=my2*.2;
+    orbitDots.forEach(d=>{
+      d.userData.theta+=d.userData.speed;
+      const th=d.userData.theta,ph=d.userData.phi;
+      const r=d.userData.r;
+      d.position.set(
+        r*Math.sin(ph)*Math.cos(th),
+        r*Math.cos(ph),
+        r*Math.sin(ph)*Math.sin(th)
+      );
+    });
+    renderer.render(scene,camera);
+  })();
+})();
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            // Toggle hamburger icon
-            const icon = mobileMenuButton.querySelector('svg');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
-            } else {
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
-            }
-        });
+/* ═══════════════════════════════
+   NAV SCROLL
+═══════════════════════════════ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+});
 
-        // Close mobile menu when clicking on a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenuButton.querySelector('svg').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
-            });
-        });
+/* ═══════════════════════════════
+   HAMBURGER
+═══════════════════════════════ */
+const ham=document.getElementById('ham');
+const mobNav=document.getElementById('mob-nav');
+ham.addEventListener('click',()=>mobNav.classList.toggle('open'));
+function closeMob(){mobNav.classList.remove('open');}
 
-        // AI Chat Functionality
-        const aiToggleBtn = document.getElementById('ai-toggle-btn');
-        const aiChat = document.getElementById('ai-chat');
-        const closeAiChat = document.getElementById('close-ai-chat');
-        const userInput = document.getElementById('user-input');
-        const sendBtn = document.getElementById('send-btn');
-        const chatOutput = document.getElementById('chat-output');
-        const chatSuggestions = document.getElementById('chat-suggestions');
-        const chatTags = document.getElementById('chat-tags');
+/* ═══════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════ */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add('visible');
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-        const quickActions = [
-            'Saya ingin migrasi ke Hostinger',
-            'Saya bingung memilih paket hosting',
-            'Saya ingin buat website'
-        ];
+/* ═══════════════════════════════
+   TEAM CAROUSEL
+═══════════════════════════════ */
+const track=document.getElementById('team-track');
+const dotsWrap=document.getElementById('team-dots');
+const cards=track.querySelectorAll('.member-card');
+const perSlide=window.innerWidth>1024?3:window.innerWidth>640?2:1;
+let ci=0;
+const total=Math.ceil(cards.length/perSlide);
 
-        const quickTags = [
-            'Produk',
-            'n8n',
-            'Cakar Terbuka',
-            'Cakrawa'
-        ];
+function buildDots(){
+  dotsWrap.innerHTML='';
+  for(let i=0;i<total;i++){
+    const d=document.createElement('div');
+    d.className='team-dot'+(i===ci?' active':'');
+    d.addEventListener('click',()=>goTo(i));
+    dotsWrap.appendChild(d);
+  }
+}
+function goTo(n){
+  ci=(n+total)%total;
+  const cardW=cards[0].offsetWidth+24;
+  track.style.transform=`translateX(-${ci*perSlide*cardW}px)`;
+  buildDots();
+}
+buildDots();
+document.getElementById('team-prev').addEventListener('click',()=>goTo(ci-1));
+document.getElementById('team-next').addEventListener('click',()=>goTo(ci+1));
+let autoT=setInterval(()=>goTo(ci+1),4000);
+track.addEventListener('mouseenter',()=>clearInterval(autoT));
+track.addEventListener('mouseleave',()=>{autoT=setInterval(()=>goTo(ci+1),4000);});
+window.addEventListener('resize',()=>buildDots());
 
-        function renderQuickActions() {
-            chatSuggestions.innerHTML = '';
-            quickActions.forEach(action => {
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.className = 'px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-wenpyid/20 text-white rounded-full text-xs transition-colors';
-                button.textContent = action;
-                button.addEventListener('click', () => {
-                    userInput.value = action;
-                    sendMessage();
-                });
-                chatSuggestions.appendChild(button);
-            });
-        }
+/* ═══════════════════════════════
+   AI CHAT
+═══════════════════════════════ */
+const chatEl=document.getElementById('ai-chat');
+const chatMsgs=document.getElementById('chat-msgs');
+const chatIn=document.getElementById('chat-in');
+const chatSugs=document.getElementById('chat-sugs');
 
-        function renderQuickTags() {
-            chatTags.innerHTML = '';
-            quickTags.forEach(tag => {
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.className = 'px-3 py-2 bg-white/5 hover:bg-white/10 text-gray-200 rounded-full text-xs transition-colors';
-                button.textContent = tag;
-                button.addEventListener('click', () => {
-                    userInput.value = tag;
-                    userInput.focus();
-                });
-                chatTags.appendChild(button);
-            });
-        }
+const sugs=['Layanan apa saja?','Berapa harga website?','Lihat portofolio tim','Cara kerja Wenpyid','Hubungi tim'];
+function renderSugs(){
+  chatSugs.innerHTML='';
+  sugs.forEach(s=>{
+    const b=document.createElement('button');
+    b.className='chat-sug-btn';b.textContent=s;
+    b.onclick=()=>{chatIn.value=s;sendMsg();};
+    chatSugs.appendChild(b);
+  });
+}
+renderSugs();
 
-        renderQuickActions();
-        renderQuickTags();
+function addMsg(text,type){
+  const d=document.createElement('div');
+  d.className='chat-msg '+type;
+  d.textContent=text;
+  chatMsgs.appendChild(d);
+  chatMsgs.scrollTop=chatMsgs.scrollHeight;
+}
 
-        // Toggle AI chat
-        aiToggleBtn.addEventListener('click', () => {
-            aiChat.classList.toggle('hidden');
-        });
+const aiReplies={
+  'layanan':'Wenpyid menyediakan: pembuatan website corporate, e-commerce, aplikasi web, UI/UX design, integrasi API, dan konsultasi teknologi.',
+  'harga':'Harga tergantung pada kompleksitas proyek. Hubungi tim kami di WhatsApp untuk konsultasi dan penawaran harga gratis!',
+  'portofolio':'Lihat portofolio lengkap di bagian Tim kami di halaman ini, atau hubungi WhatsApp +62 851-7854-9054.',
+  'cara kerja':'Proses kami: 1) Discovery, 2) Design, 3) Development, 4) Launch. Setiap tahap melibatkan feedback dari Anda.',
+  'hubungi':'Hubungi tim kami melalui WhatsApp: +62 851-7854-9054 atau email: wennipyid@gmail.com',
+  'tim':'Tim Wenpyid terdiri dari 8 developer profesional dengan spesialisasi berbeda: full stack, frontend, backend, UI/UX, dan data analyst.',
+  'default':'Terima kasih! Untuk informasi lebih detail, hubungi tim Wenpyid melalui WhatsApp di +62 851-7854-9054.'
+};
 
-        // Close AI chat
-        closeAiChat.addEventListener('click', () => {
-            aiChat.classList.add('hidden');
-        });
+function getReply(msg){
+  const l=msg.toLowerCase();
+  for(const[k,v]of Object.entries(aiReplies)){
+    if(k!=='default'&&l.includes(k))return v;
+  }
+  return aiReplies.default;
+}
 
-        // Send message function
-        function sendMessage() {
-            const message = userInput.value.trim();
-            if (message === '') return;
+function sendMsg(){
+  const txt=chatIn.value.trim();if(!txt)return;
+  addMsg(txt,'user');chatIn.value='';
+  setTimeout(()=>addMsg(getReply(txt),'ai'),900);
+}
 
-            // Add user message
-            addMessage('You', message, 'user');
-            userInput.value = '';
+document.getElementById('ai-fab').addEventListener('click',()=>{
+  chatEl.style.display=chatEl.style.display==='block'?'none':'block';
+});
+document.getElementById('chat-close').addEventListener('click',()=>{chatEl.style.display='none';});
+document.getElementById('chat-send').addEventListener('click',sendMsg);
+chatIn.addEventListener('keypress',e=>{if(e.key==='Enter')sendMsg();});
 
-            // Simulate AI response
-            setTimeout(() => {
-                const response = getAIResponse(message);
-                addMessage('AI Wenpy', response, 'ai');
-            }, 1000);
-        }
+/* ═══════════════════════════════
+   SMOOTH SCROLL
+═══════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+    closeMob();
+  });
+});
 
-        // Add message to chat
-        function addMessage(sender, message, type) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `mb-2 p-2 rounded-lg text-sm ${type === 'user' ? 'bg-wenpyid/20 text-right ml-8' : 'bg-gray-700/50 text-left mr-8'}`;
-            messageDiv.innerHTML = `<strong class="${type === 'user' ? 'text-wenpyid' : 'text-blue-400'}">${sender}:</strong> ${message}`;
-            chatOutput.appendChild(messageDiv);
-            chatOutput.scrollTop = chatOutput.scrollHeight;
-        }
-
-        // Simple AI responses
-        function getAIResponse(message) {
-            const responses = {
-                'halo': 'Halo! Senang bertemu dengan Anda! Ada yang bisa saya bantu tentang Wenpyid?',
-                'hi': 'Hi! Saya AI Wenpy, asisten virtual Wenpyid. Apa yang ingin Anda ketahui?',
-                'hostinger': 'Migrasi ke Hostinger bisa dilakukan dengan backup file dan database lalu update DNS. Kami bisa bantu setup dan transfer hosting.',
-                'paket hosting': 'Untuk memilih paket hosting, sesuaikan dengan traffic, storage, dan dukungan teknis. Hubungi tim kami untuk rekomendasi paket terbaik.',
-                'hosting': 'Hosting yang tepat bergantung pada kebutuhan website Anda. Kami bisa bantu memilih paket yang cocok untuk bisnis dan trafik Anda.',
-                'buat website': 'Tentu! Kami dapat membantu membuat website sesuai kebutuhan Anda, mulai dari landing page hingga toko online.',
-                'website': 'Wenpyid dapat membuat website modern, responsif, dan siap produksi untuk bisnis, portofolio, atau e-commerce.',
-                'produk': 'Produk yang tepat tergantung tujuan website Anda. Apakah Anda ingin katalog online, platform booking, atau profil brand?',
-                'n8n': 'n8n adalah otomasi workflow open-source. Jika Anda butuh integrasi API dan otomatisasi tugas, kami bisa bantu implementasi.',
-                'cakar': 'Cakar Terbuka adalah layanan digital yang bisa memberikan solusi kreatif. Beri tahu kami kebutuhan Anda agar dapat direkomendasikan.',
-                'cakrawa': 'Cakrawa bisa menjadi topik pengembangan produk digital tertentu. Jika Anda butuh ide, saya siap bantu memberikan konsep.',
-                'tim': 'Tim Wenpyid terdiri dari developer profesional dengan spesialisasi penuh stack, frontend, backend, UI/UX, dan data.',
-                'portofolio': 'Anda bisa melihat portofolio lengkap tim melalui WhatsApp atau kunjungi halaman team di website ini.',
-                'kontak': 'Anda bisa menghubungi tim melalui WhatsApp di +62 851-7854-9054 atau email team@wenpyid.com',
-                'harga': 'Untuk informasi harga dan paket layanan, silakan hubungi tim kami langsung untuk konsultasi gratis.',
-                'layanan': 'Wenpyid menyediakan jasa pembuatan website modern, aplikasi web, dan konsultasi teknologi.',
-                'default': 'Terima kasih atas pertanyaannya! Untuk informasi lebih detail, silakan hubungi tim Wenpyid melalui WhatsApp.'
-            };
-
-            const lowerMessage = message.toLowerCase();
-            for (const [key, response] of Object.entries(responses)) {
-                if (lowerMessage.includes(key)) {
-                    return response;
-                }
-            }
-            return responses.default;
-        }
-
-        // Event listeners
-        sendBtn.addEventListener('click', sendMessage);
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-    </script>
+/* ═══════════════════════════════
+   COUNT UP ANIMATION
+═══════════════════════════════ */
+const countEls=document.querySelectorAll('[data-count]');
+const cIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target;
+    const target=parseInt(el.dataset.count);
+    let current=0;
+    const step=target/40;
+    const interval=setInterval(()=>{
+      current+=step;
+      if(current>=target){current=target;clearInterval(interval);}
+      el.textContent=Math.round(current)+(el.dataset.suffix||'');
+    },40);
+    cIO.unobserve(el);
+  });
+},{threshold:.5});
+countEls.forEach(el=>cIO.observe(el));
+</script>
 </body>
 </html>
